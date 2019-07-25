@@ -37,23 +37,28 @@
                 <div class="menu-profile">
                     <ul class="user-nav">
                         <li class="btns active" id="sala">
-                            <a href="#">
+                            <a href="#sala">
                             <i class="material-icons">event_seat</i>
                             Aggiungi sala</a>
                         </li>
 
                         <li class="btns" id="new-movie">
-                            <a href="#">
+                            <a href="#new-movie">
                             <i class="material-icons">movie</i>
                             Aggiungi film </a>
                         </li>
                         
                         <li class="btns" id="edit-movie">
-                            <a href="#">
+                            <a href="#edit-movie">
                             <i class="material-icons">movie</i>
                             Modifica film </a>
                         </li>
 
+                        <li class="btns" id="new-screening">
+                            <a href="#new-screening">
+                            <i class="material-icons">movie</i>
+                            Modifica programmazione </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -80,7 +85,13 @@
         btns[i].addEventListener("click", function() {
             var current = document.getElementsByClassName("active");
             current[0].className = current[0].className.replace(" active", "");
-            changeDiv(this.id);
+            // changeDiv(this.id);
+            var destination = window.location.hash;
+            console.log(destination);
+            if (destination != "") {
+                var dest = destination.replace("#", "");
+                changeDiv(dest);
+            }
             this.className += " active";     
         });
     }
@@ -97,6 +108,8 @@
             }
         }
     }
+
+    
     </script>
 </body>
 </html>

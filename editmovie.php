@@ -23,7 +23,7 @@
             ?>
         </select>
         <div class="input-group">
-        <button type="submit" class="btn" name="edit_movie">Seleziona</button>
+        <button type="submit" class="btn" name="edit_movie" id="edit-movie">Seleziona</button>
         </div>
     </form>
     <?php if (isset($_POST['movie'])) : ?>

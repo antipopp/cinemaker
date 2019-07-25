@@ -115,3 +115,19 @@
 .edit-settings ul li {
     margin: 10px;
 }
+
+.sala {
+    display: flex;
+}
+
+.new-movie {
+    display: none;
+}
+
+.edit-movie {
+    display: none;
+}
+
+.new-screening {
+    display: none;
+}
