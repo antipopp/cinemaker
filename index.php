@@ -6,36 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/covers.css">
-
+    <link rel="stylesheet" href="css/navbar.css">
     <title>CineMaker</title>
 </head>
 <body>
-    <nav class="top">
-        <a href="/" class="logo">CineMaker</a>
-        <?php
-            session_start();
-            if (!isset($_SESSION['username'])) {
-                echo '<div class="menu">';
-                echo '<a href="php/login.php">Accedi</a>';
-                echo '<a href="php/register.php">Registrati</a>';
-                echo '</div>';
-            } 
-            else {
-                echo '<div class="menu">';
-                echo '<a href="control.php">'. $_SESSION['username'] .'</a>';
-                echo '<a href="php/logout.php">Logout</a>';
-                echo '</div>';
-            }
-        ?>
-    </nav>
-
-    <nav class="bottom menu">
-        <a href="#">Prossimamente</a>
-        <a href="#">Programmazione</a>
-        <a href="#">Eventi</a>
-        <a href="#">Prezzi</a>
-        <a href="#">Contatti</a>
-    </nav>
+    <?php include("php/navbar.php"); ?>
 
     <section class="covers-container">
         <div class="covers fade">
@@ -93,5 +68,6 @@
 
     <footer></footer>
     <script src="js/covers.js"></script>
+    <script src="js/loginDropdown.js"></script>
 </body>
 </html>

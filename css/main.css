@@ -1,39 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
 body {
   background: #F1F3FA;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Roboto Mono', monospace;
 }
 
-/* NAVBAR */
-
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.error {
+  width: 92%; 
+  margin: 0px auto 5px auto; 
+  padding: 10px; 
+  border: 1px solid #a94442; 
+  color: #a94442; 
+  background: #f2dede; 
+  border-radius: 5px; 
+  text-align: left;
 }
-.top {
-  background: #1694b0;
-  padding: 20px;
-}
-
-.logo {
-  font-size: 50px
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.bottom {
+.success {
+  width: 92%; 
+  margin: 0px auto 5px auto; 
   padding: 10px;
-  background-color: aquamarine;
+  color: #3c763d; 
+  background: #dff0d8; 
+  border: 1px solid #3c763d;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 5px; 
 }
 
 /* CONTENT GRID */

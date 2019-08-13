@@ -26,9 +26,9 @@
         $movie_check = mysqli_fetch_assoc($result_movie_check);
             
         if ($movie_check) { // se il film esiste gia`
-        if ($movie_check['title'] === $title) {
-            array_push($errors, "Film gia` inserito");
-        }
+            if ($movie_check['title'] === $title) {
+                array_push($errors, "Film gia` inserito");
+            }
         }
         
         if (count($errors) == 0) {
