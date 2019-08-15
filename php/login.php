@@ -1,21 +1,25 @@
 <?php
+require_once '/config.php';
 require_once 'utils/db.php';
-$username = "";
-$email    = "";
-$errors = array(); 
-$success = array();
+require_once 'utils/functions.php';
+$errors = 0;
+$err1 = "Tutti i campi sono obbligatori";
+$err2 = "Username o password errati";
 if (isset($_POST['login_user'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
   
     if (empty($username)) {
-        array_push($errors, "Username obbligatorio");
+        $errors++;
+        header('location: '.PathToUrl(ROOT."php/landinglogin.php?error=".$err1));
     }
     if (empty($password)) {
-        array_push($errors, "Password obbligatoria");
+
+        $errors++;
+        header('location: '.PathToUrl(ROOT."php/landinglogin.php?error=".$err1));
     }
   
-    if (count($errors) == 0) {
+    if ($errors == 0) {
         $password = md5($password);
         $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
         $results = mysqli_query($db, $query);
@@ -24,10 +28,10 @@ if (isset($_POST['login_user'])) {
           $_SESSION['username'] = $username;
           $_SESSION['id'] = $row['id'];
           $_SESSION['isAdmin'] = $row['isAdmin'];
-          $success = "Hai effettuato l'accesso";
-          header('location: index.php');
+          header('location: '.PathToUrl(ROOT."index.php"));
         } else {
           array_push($errors, "Username o password errati");
+          header('location: '.PathToUrl(ROOT."php/landinglogin.php?error=".$err2));
         }
     }
 }

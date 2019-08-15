@@ -1,7 +1,7 @@
 <nav class="top">
     <div class="wrapper-header">
         <div class="logo-column">
-            <a href="index.php" class="logo">CineMaker</a>
+            <a href="/cinemaker" class="logo">CineMaker</a>
         </div>
         <div class="btn-column">
             <?php
@@ -10,11 +10,11 @@
             ?>
 
             <div class="container">
-                <?php include('php/login.php') ?>
+                <?php include ROOT.'php/login.php'; ?>
                 <a href="#" class="login-button">log in</a>
                 <div class="login-container">
                     <form class="login-form" method="post" action="#">
-                        <?php include('php/errors.php'); ?>
+                        <?php include ROOT.'php/errors.php'; ?>
                         <input type="text" name="username" placeholder="Username">
                         <input type="password" name="password" placeholder="Password">
                         <input type="submit" name="login_user" value="SUBMIT" />
@@ -25,12 +25,12 @@
 
             <?php        
                 } 
-                else {
-                    echo '<div class="menu">';
-                    echo '<a href="control.php">'. $_SESSION['username'] .'</a>';
-                    echo '<a href="php/logout.php">Logout</a>';
-                    echo '</div>';
-                }
+                else { ?>
+                    <div class="menu">
+                    <a href="control.php"><?php echo $_SESSION['username']; ?></a>
+                    <a href="<?php echo PathToUrl(ROOT."php/logout.php"); ?>">Logout</a>
+                    </div>
+                <?php }
             ?>
         </div>
     </div>
@@ -45,3 +45,5 @@
         <li><a href="#">Contatti</a></li>
     </ul>
 </nav>
+
+<script src="<?php echo PathToUrl(ROOT."js/loginDropdown.js"); ?>"></script>

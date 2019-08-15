@@ -1,3 +1,6 @@
+<?php include('config.php'); 
+include('php/utils/functions.php');?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -68,6 +71,5 @@
 
     <footer></footer>
     <script src="js/covers.js"></script>
-    <script src="js/loginDropdown.js"></script>
 </body>
 </html>
