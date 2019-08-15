@@ -1,3 +1,8 @@
+<?php 
+    require_once 'config.php';
+    require_once 'php/utils/functions.php';
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,30 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/inputs.css">
     <title>Pannello di amministrazione</title>
 </head>
 <body>
-    <nav class="top">
-        <a href="index.php" class="logo">CineMaker</a>
-        <?php
-            session_start();
-            if (!isset($_SESSION['username'])) {
-                echo '<div class="menu">';
-                echo '<a href="php/login.php">Accedi</a>';
-                echo '<a href="php/register.php">Registrati</a>';
-                echo '</div>';
-            }
-            else {
-                echo '<div class="menu">';
-                echo '<a href="control.php">'. $_SESSION['username'] .'</a>';
-                echo '<a href="php/logout.php">Logout</a>';
-                echo '</div>';
-            }
-        ?>
-    </nav>
+    <?php include_once 'php/navbar.php' ?>
     <div class="container-main">
         <div class="container-profile">
             <div class="side-profile">
@@ -79,37 +68,5 @@
             </div>
         </div>
     </div>
-    <script>
-    var btns = document.getElementsByClassName("btns");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            // changeDiv(this.id);
-            var destination = window.location.hash;
-            console.log(destination);
-            if (destination != "") {
-                var dest = destination.replace("#", "");
-                changeDiv(dest);
-            }
-            this.className += " active";     
-        });
-    }
-
-    function changeDiv(input) {
-        landingDiv = "div."+input;
-        var mainDiv = document.getElementsByClassName("main-profile");
-        for (var i = 0; i < mainDiv[0].childNodes.length; i++) {
-            if (i%2 != 0) {
-                if (input == mainDiv[0].childNodes[i].className)
-                    mainDiv[0].childNodes[i].style.display = "flex";
-                else
-                    mainDiv[0].childNodes[i].style.display = "none";
-            }
-        }
-    }
-
-    
-    </script>
 </body>
 </html>

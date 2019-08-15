@@ -1,4 +1,4 @@
-.landing-container {
+.form-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -6,7 +6,7 @@
     align-content: center;
 }
 
-.login-panel {
+.form-panel {
     width: 300px;
     display: flex;
     align-items: center;
@@ -18,13 +18,13 @@
     background: #1BBC9B;
 }
 
-.login-panel form {
+.form-panel form {
     display: flex;
     align-content: center;
     flex-direction: column;
 }
 
-.login-panel input {
+.form-panel input {
     border:1px solid #ccc;
     width:200px;
     padding:10px;
@@ -32,16 +32,16 @@
     border-radius:5px;
 }
 
-.login-header, .login-label {
+.form-header, .form-label {
     font-family: 'Roboto', sans-serif;
 }
 
-.login-header {
+.form-header {
     color: #fff;
     margin-bottom: 10px;
 }
 
-.login-panel button[type='submit'] {
+.form-panel button[type='submit'] {
     border: none;
     background: #F9433E;
     cursor: pointer;
@@ -51,6 +51,6 @@
     color: white;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
   }
-  .login-panel button[type='submit']:hover {
+  .form-panel button[type='submit']:hover {
     background: #f7130d;
   }

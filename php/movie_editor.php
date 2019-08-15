@@ -1,6 +1,6 @@
 <?php
     require_once 'utils/db.php';
-    $errors = array();
+    $errorArray = array();
     $success = array();
     $movie_list_query = "SELECT id, title FROM movies";
     $movie_list_results = mysqli_query($db, $movie_list_query);

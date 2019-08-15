@@ -3,7 +3,7 @@
     $user_query = "SELECT * FROM users WHERE id=".$_SESSION['id'];
     $user_results = mysqli_query($db, $user_query);
     $row = mysqli_fetch_assoc($user_results);
-    $errors = [];
+    $errorArray = [];
     $success = [];
 
     $id = $row['id'];
@@ -19,7 +19,7 @@
             $email_check = mysqli_fetch_assoc($result);
 
             if ($email_check)
-                array_push($errors, "Email già utilizzata");
+                array_push($errorArray, "Email già utilizzata");
         }
         else
             $new_email = $email;
@@ -29,7 +29,7 @@
             $password_1 = mysqli_real_escape_string($db, $_POST['new_password']);
             $password_2 = mysqli_real_escape_string($db, $_POST['new_password_confirm']);
             if ($password_1 != $password_2)
-                array_push($errors, "Le nuove password non coincidono");
+                array_push($errorArray, "Le nuove password non coincidono");
             else
                 $password = md5($password_1);
         }
@@ -37,9 +37,9 @@
             $password = $old_password;
 
         if ($old_password != md5($_POST['old_password']))
-            array_push($errors, "La vecchia password è sbagliata");
+            array_push($errorArray, "La vecchia password è sbagliata");
         
-        if (count($errors) == 0) {      
+        if (count($errorArray) == 0) {      
             $query = "UPDATE users
                     SET password='".$password."',
                         email='".$new_email."'

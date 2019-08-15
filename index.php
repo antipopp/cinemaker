@@ -1,5 +1,7 @@
-<?php include('config.php'); 
-include('php/utils/functions.php');?>
+<?php 
+    include 'config.php'; 
+    include 'php/utils/functions.php';
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -13,7 +15,10 @@ include('php/utils/functions.php');?>
     <title>CineMaker</title>
 </head>
 <body>
-    <?php include("php/navbar.php"); ?>
+    <?php 
+        session_start();
+        include "php/navbar.php"; 
+    ?>
 
     <section class="covers-container">
         <div class="covers fade">

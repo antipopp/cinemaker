@@ -1,5 +1,5 @@
 <?php
-require_once '/config.php';
+require_once '../config.php';
 require_once 'utils/db.php';
 require_once 'utils/functions.php';
 $errors = 0;
@@ -25,6 +25,7 @@ if (isset($_POST['login_user'])) {
         $results = mysqli_query($db, $query);
         $row = mysqli_fetch_assoc($results);
         if (mysqli_num_rows($results) == 1) {
+          session_start();
           $_SESSION['username'] = $username;
           $_SESSION['id'] = $row['id'];
           $_SESSION['isAdmin'] = $row['isAdmin'];

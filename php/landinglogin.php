@@ -1,6 +1,6 @@
 <?php 
-	include_once 'login.php';
-	include_once '../config.php';
+	require_once 'login.php';
+	require_once('../config.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,13 +8,13 @@
 	<title>Login</title>
 	<link rel="stylesheet" href="../css/main.css">
 	<link rel="stylesheet" href="../css/navbar.css">
-	<link rel="stylesheet" href="../css/login.css">
+	<link rel="stylesheet" href="../css/form.css">
 </head>
 <body>
 	<?php include 'navbar.php'; ?>
-	<div class="landing-container">
-		<div class="login-panel">
-			<h2 class="login-header">login</h3>
+	<div class="form-container">
+		<div class="form-panel">
+			<h2 class="form-header">login</h2>
 			<?php include 'errors.php'; ?>
 			<form action="#" method="post">
 				<input type="text" name="username" placeholder="Username">

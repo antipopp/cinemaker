@@ -1,6 +1,5 @@
 <?php
 require_once 'utils/db.php';
-session_start();
 
 $username = "";
 $email    = "";
@@ -41,9 +40,9 @@ if (isset($_POST['reg_user'])) {
   if (count($errorArray) == 0) {
     // oscuramento della password
   	$password = md5($password_1);
-
-  	$query = "INSERT INTO users (username, email, password) 
-  	          VALUES('$username', '$email', '$password')";
+    $uniqid = "user".uniqid();
+  	$query = "INSERT INTO users (id, username, email, password) 
+  	          VALUES('$uniqid', '$username', '$email', '$password')";
   	mysqli_query($db, $query);
     header('location: ../index.php');
   }
