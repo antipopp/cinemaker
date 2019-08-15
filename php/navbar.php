@@ -5,23 +5,21 @@
         </div>
         <div class="btn-column">
             <?php
-                session_start();
                 if (!isset($_SESSION['username'])) {
             ?>
 
             <div class="container">
-                <?php include ROOT.'php/login.php'; ?>
+                <?php include_once ROOT.'php/login.php'; ?>
                 <a href="#" class="nav-button">log in</a>
                 <div class="login-container">
                     <form class="login-form" method="post" action="#">
-                        <?php include ROOT.'php/errors.php'; ?>
                         <input type="text" name="username" placeholder="Username">
                         <input type="password" name="password" placeholder="Password">
-                        <input type="submit" name="login_user" value="SUBMIT" />
+                        <input type="submit" name="login_user" value="INVIA" />
                     </form>
                 </div>
             </div>
-            <a href="#" class="nav-button">Registrati</a>
+            <a href="<?php echo PathToUrl(ROOT."php/register.php"); ?>" class="nav-button">Registrati</a>
 
             <?php        
                 } 
