@@ -42,7 +42,7 @@
   width: 100%;
 }
 
-.login-button {
+.nav-button {
   padding: 8px 15px;
   border: 0;
   outline: 0;
@@ -55,7 +55,7 @@
   box-shadow: 0 4px 0 #18a689;
 }
 
-.login-button:active {
+.nav-button:active {
   margin-top: 2px;
   box-shadow: 0 2px 0 #18a689;
 }

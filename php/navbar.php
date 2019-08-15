@@ -11,7 +11,7 @@
 
             <div class="container">
                 <?php include ROOT.'php/login.php'; ?>
-                <a href="#" class="login-button">log in</a>
+                <a href="#" class="nav-button">log in</a>
                 <div class="login-container">
                     <form class="login-form" method="post" action="#">
                         <?php include ROOT.'php/errors.php'; ?>
@@ -21,14 +21,14 @@
                     </form>
                 </div>
             </div>
-            <a href="#" class="login-button">Registrati</a>
+            <a href="#" class="nav-button">Registrati</a>
 
             <?php        
                 } 
                 else { ?>
                     <div class="menu">
-                    <a href="control.php"><?php echo $_SESSION['username']; ?></a>
-                    <a href="<?php echo PathToUrl(ROOT."php/logout.php"); ?>">Logout</a>
+                    <a href="<?php echo PathToUrl(ROOT."control.php"); ?>" class="nav-button">PANNELLO UTENTE</a>
+                    <a href="<?php echo PathToUrl(ROOT."php/logout.php"); ?>" class="nav-button">Logout</a>
                     </div>
                 <?php }
             ?>
