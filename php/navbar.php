@@ -24,7 +24,7 @@
                 } 
                 else { ?>
                     <div class="menu">
-                    <a href="<?php echo PathToUrl(ROOT."control.php"); ?>" class="nav-button">PANNELLO UTENTE</a>
+                    <a href="<?php echo PathToUrl(ROOT."user/settings.php"); ?>" class="nav-button">PANNELLO UTENTE</a>
                     <a href="<?php echo PathToUrl(ROOT."php/logout.php"); ?>" class="nav-button">Logout</a>
                     </div>
                 <?php }

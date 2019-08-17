@@ -10,4 +10,10 @@
 		echo "</div>";
 	}
 
+	if (count($success) > 0) {
+		echo "<div class='success'>";
+		foreach($success as $msg)
+			echo "<p>".$msg."</p>";
+		echo "</div>";
+	}
 ?>

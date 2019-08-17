@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    flex-direction: column;
 }
 
 .form-panel {
@@ -16,6 +17,18 @@
     padding: 40px;
     margin: 60px auto;
     background: #1BBC9B;
+}
+
+.wide {
+    width: 100% !important;
+    margin: 0px;
+}
+
+.last-child {
+    margin-top: 20px;
+}
+.short {
+    height: 30%;
 }
 
 .form-panel form {
@@ -47,10 +60,11 @@
     cursor: pointer;
     margin: 0 auto;
     padding: 5px;
-    width: 80%;
+    width: 180px;
     color: white;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
   }
-  .form-panel button[type='submit']:hover {
+
+.form-panel button[type='submit']:hover {
     background: #f7130d;
-  }
+}
