@@ -20,7 +20,7 @@
 
 .form-panel form {
     display: flex;
-    align-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -32,7 +32,7 @@
     border-radius:5px;
 }
 
-.form-header, .form-label {
+.form-header {
     font-family: 'Roboto', sans-serif;
 }
 

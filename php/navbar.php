@@ -11,9 +11,9 @@
             <div class="container">
                 <a href="#" class="nav-button">log in</a>
                 <div class="login-container">
-                    <form class="login-form" method="post" action="<?php echo PathToUrl(ROOT.'php/landinglogin.php'); ?>">
-                        <input type="text" name="username" placeholder="Username">
-                        <input type="password" name="password" placeholder="Password">
+                    <form class="login-form" method="post" action="<?php echo PathToUrl(ROOT.'php/signin.php'); ?>">
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Password" required>
                         <input type="submit" name="login_user" value="INVIA" />
                     </form>
                 </div>

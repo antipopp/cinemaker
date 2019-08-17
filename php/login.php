@@ -11,12 +11,12 @@ if (isset($_POST['login_user'])) {
   
     if (empty($username)) {
         $errors++;
-        header('location: '.PathToUrl(ROOT."php/landinglogin.php?error=".$err1));
+        header('location: '.PathToUrl(ROOT."php/signin.php?error=".$err1));
     }
     if (empty($password)) {
 
         $errors++;
-        header('location: '.PathToUrl(ROOT."php/landinglogin.php?error=".$err1));
+        header('location: '.PathToUrl(ROOT."php/signin.php?error=".$err1));
     }
   
     if ($errors == 0) {
@@ -32,7 +32,7 @@ if (isset($_POST['login_user'])) {
           header('location: '.PathToUrl(ROOT."index.php"));
         } else {
           array_push($errors, "Username o password errati");
-          header('location: '.PathToUrl(ROOT."php/landinglogin.php?error=".$err2));
+          header('location: '.PathToUrl(ROOT."php/signin.php?error=".$err2));
         }
     }
 }

@@ -1,6 +1,7 @@
 <?php 
 	require_once 'login.php';
-	require_once('../config.php');
+	require_once '../config.php';
+	require_once 'utils/functions.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,8 +18,8 @@
 			<h2 class="form-header">login</h2>
 			<?php include 'errors.php'; ?>
 			<form action="#" method="post">
-				<input type="text" name="username" placeholder="Username">
-				<input type="password" name="password" placeholder="Password">
+				<input type="text" name="username" placeholder="Username" required>
+				<input type="password" name="password" placeholder="Password" required>
 				<br>
 				<button type="submit" name="login_user">INVIA</button>
 			</form>

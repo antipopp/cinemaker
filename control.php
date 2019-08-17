@@ -52,11 +52,13 @@
                 <div class="form-panel">
                     <?php include ('php/edit_user.php'); ?>
                     <form method="post" action="">
+                        <h2 class="form-header">Modifica i dati</h2>
                         <?php include('php/errors.php'); ?>
                         <input type="text" name="email" value="<?php echo $email; ?>">                       
                         <input type="password" name="old_password" value="" placeholder="Vecchia Pasword">                       
                         <input type="password" name="new_password" value="" placeholder="Nuova Password">                        
                         <input type="password" name="new_password_confirm" value="" placeholder="Conferma Nuova Password">
+                        <br>
                         <button type="submit" class="btn" name="send_edit" value="">Modifica</button>
                     </form>
                 </div>
