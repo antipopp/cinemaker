@@ -2,6 +2,7 @@
 	require_once 'login.php';
 	require_once '../config.php';
 	require_once 'utils/functions.php';
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,10 @@
 	<link rel="stylesheet" href="../css/form.css">
 </head>
 <body>
-	<?php include 'navbar.php'; ?>
+	<?php 
+		include 'navbar.php'; 
+		if (!isLogged()) {
+	?>
 	<div class="form-container">
 		<div class="form-panel">
 			<h2 class="form-header">login</h2>
@@ -25,5 +29,11 @@
 			</form>
 		</div>
 	</div>
+	<?php 
+		}
+		else {
+			header('location: '.PathToUrl(ROOT));
+		}
+	?>
 </body>
 </html>

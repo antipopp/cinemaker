@@ -18,7 +18,15 @@
     <title>Pannello di amministrazione</title>
 </head>
 <body>
-    <?php include_once '../php/navbar.php' ?>
+    <?php 
+        include_once '../php/navbar.php';
+        if (!isAdmin()) {
+            echo '<div class="form-panel wide">';
+            echo '<div class="error">Accesso riservato agli admin</div>';
+            echo '</div>';
+        }
+        else {
+    ?>
     <div class="container-main">
         <div class="container-profile">
             <div class="side-profile">
@@ -85,5 +93,6 @@
             </div>
         </div>
     </div>
+        <?php } ?>
 </body>
 </html>

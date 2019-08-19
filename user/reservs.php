@@ -17,7 +17,14 @@
     <title>Pannello di controllo</title>
 </head>
 <body>
-    <?php include_once '../php/navbar.php' ?>
+    <?php 
+        include_once '../php/navbar.php';
+        if (!isLogged()) {
+            $err = "Area riservata agli utenti registrati";
+            header('location: '.PathToUrl(ROOT."php/signin.php?error=".$err));
+        }
+        else {       
+    ?>
     <div class="container-main">
         <div class="container-profile">
             <div class="side-profile">
@@ -53,5 +60,6 @@
             </div>
         </div>
     </div>
+    <?php } ?>
 </body>
 </html>

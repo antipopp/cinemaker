@@ -17,7 +17,14 @@
     <title>Pannello di controllo</title>
 </head>
 <body>
-    <?php include_once '../php/navbar.php' ?>
+    <?php 
+        include_once '../php/navbar.php';
+        if (!isLogged()) {
+            $err = "Area riservata agli utenti registrati";
+            header('location: '.PathToUrl(ROOT."php/signin.php?error=".$err));
+        }
+        else {
+    ?>
     <div class="container-main">
         <div class="container-profile">
             <div class="side-profile">
@@ -50,10 +57,10 @@
 
             <div class="main-profile">
                 <div class="form-panel">
-                    <?php include ('../php/edit_user.php'); ?>
+                    <?php include '../php/edit_user.php'; ?>
                     <form method="post" action="">
                         <h2 class="form-header">Modifica i dati</h2>
-                        <?php include('../php/errors.php'); ?>
+                        <?php include '../php/errors.php'; ?>
                         <input type="text" name="email" value="<?php echo $email; ?>">                       
                         <input type="password" name="old_password" value="" placeholder="Vecchia Pasword" required>                       
                         <input type="password" name="new_password" value="" placeholder="Nuova Password">                        
@@ -65,5 +72,6 @@
             </div>
         </div>
     </div>
+    <?php } ?>
 </body>
 </html>

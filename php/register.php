@@ -2,6 +2,7 @@
 	require_once 'registration.php'; 
 	require_once '../config.php';
 	require_once 'utils/functions.php';
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,10 @@
 	<link rel="stylesheet" type="text/css" href="../css/form.css">
 </head>
 <body>
-	<?php include_once 'navbar.php'; ?>
+	<?php 
+		include 'navbar.php'; 
+		if (!isLogged()) {
+	?>
 	<div class="landing-container">
 		<div class="form-panel">
 			<h2 class="form-header">Registrazione</h2>
@@ -29,5 +33,11 @@
 			</form>
 		</div>
 	</div>
+	<?php 
+		}
+		else {
+			header('location: '.PathToUrl(ROOT));
+		}
+	?>
 </body>
 </html>

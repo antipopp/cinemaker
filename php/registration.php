@@ -3,7 +3,8 @@ require_once 'utils/db.php';
 
 $username = "";
 $email    = "";
-$errorArray   = array(); 
+$errorArray = array(); 
+$success = array();
 
 // REGISTRA UTENTE
 if (isset($_POST['reg_user'])) {

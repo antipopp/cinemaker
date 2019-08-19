@@ -1,11 +1,11 @@
 <nav class="top">
     <div class="wrapper-header">
         <div class="logo-column">
-            <a href="<?php echo PathToUrl(ROOT); ?>" class="logo">CineMaker</a>
+            <a href="<?php echo PathToUrl(ROOT); ?>" class="logo">Cinemino</a>
         </div>
         <div class="btn-column">
             <?php
-                if (!isset($_SESSION['username'])) {
+                if (!isLogged()) {
             ?>
 
             <div class="container">
