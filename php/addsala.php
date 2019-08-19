@@ -1,7 +1,7 @@
 <?php
   require_once 'utils/db.php';
 
-  $errorArray = array(); 
+  $errors = array(); 
   $success = array();
   $name = "";
   $seats = 0;

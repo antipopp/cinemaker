@@ -1,14 +1,14 @@
 <?php
     require_once 'utils/db.php';
+    require 'utils/queries.php';
 
-    $errorArray = array(); 
+    $errors = array(); 
     $success = array();
     $title = "";
     $sala = "";
 
     // seleziona film
-    $movie_list_query = "SELECT id, title FROM movies";
-    $movie_list_results = mysqli_query($db, $movie_list_query);
+    $movie_list = getAllMovies();
     $sala_list_query = "SELECT * FROM sale";
     $sala_list_results = mysqli_query($db, $sala_list_query);
 
@@ -23,25 +23,27 @@
         $start = date("Y-m-d H:i:s", $dateTime);
         
         $screen_check_query = "SELECT * FROM screenings WHERE screening_start='$start' LIMIT 1";
-        $result_screen_check = mysqli_query($db, $movie_check_query);
-        $screen_check = mysqli_fetch_assoc($result_movie_check);
+        $result_screen_check = mysqli_query($db, $screen_check_query);
+        $screen_check = mysqli_fetch_assoc($result_screen_check);
             
         if ($screen_check) { // se la proiezione e` gia` inserita
             if ($screen_check['sala_id'] === $sala) {
-                array_push($errorArray, "Proiezione gia` inserita");
+                array_push($errors, "Proiezione gia` inserita");
             }
         }
+
+        mysqli_free_result($result_screen_check);
         
-        if (count($errorArray) == 0) {
-        $query = "INSERT INTO screenings (movie_id, sala_id, screening_start) 
-            VALUES('$movie', '$sala', '$start')";
-        
-        if (mysqli_query($db, $query))
-            $msg = "?success=Proiezione inserita con successo";
-        else
-            $msg = "?error=Errore nell'inserimento della proiezione";
+        if (count($errors) == 0) {
+            $query = "INSERT INTO screenings (movie_id, sala_id, screening_start) 
+            VALUES('$movie', '$sala', '$start')";        
+            if ($db->query($query))
+                array_push($success, "Proiezione inserita con successo");
+            else 
+                array_push($errors, $db->error);
         }
-        header("location: ".$_SERVER['PHP_SELF'].$msg);
+
+        $db->close();
     }
 
     if (isset($_POST['select_id'])) {
@@ -53,5 +55,6 @@
         $sala_info_results = mysqli_query($db, $sala_info_query);
         $seats = mysqli_fetch_assoc($sala_info_results);
         $durata = mysqli_fetch_assoc($movie_info_results);
+        $db->close();
     }
 ?>

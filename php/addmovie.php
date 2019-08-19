@@ -1,7 +1,7 @@
 <?php
   require_once 'utils/db.php';
 
-  $errorArray = array(); 
+  $errors = array(); 
   $success = array();
   $title = "";
   $descr = "";
@@ -35,20 +35,20 @@
         && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) 
         {
-          array_push($errorArray, "Sono consentiti solo formati JPG/JPEG, PNG o GIF");
+          array_push($errors, "Sono consentiti solo formati JPG/JPEG, PNG o GIF");
           $uploadOk = 0; 
         }
 
       if($uploadOk == 1)
         move_uploaded_file($_FILES["cover"]["tmp_name"], $target_file);
       else
-        array_push($errorArray, "Errore nel caricamento del file");
+        array_push($errors, "Errore nel caricamento del file");
     }
 
     
     
-    // validazione del form aggiungendo all'array $errorArray gli eventuali errori
-    if (empty($title)) { array_push($errorArray, "Titolo obbligatorio"); }
+    // validazione del form aggiungendo all'array $errors gli eventuali errori
+    if (empty($title)) { array_push($errors, "Titolo obbligatorio"); }
 
     // controllo il database per eventuali username o email gia` esistenti
     $movie_check_query = "SELECT * FROM movies WHERE title='$title' LIMIT 1";
@@ -57,17 +57,17 @@
         
     if ($movie_check) { // se il film esiste gia`
       if ($movie_check['title'] === $title) {
-        array_push($errorArray, "Film gia` inserito");
+        array_push($errors, "Film gia` inserito");
       }
     }
     
-    if (count($errorArray) == 0) {
+    if (count($errors) == 0) {
       $query = "INSERT INTO movies (title, genre, cast, director, description, duration, cover) 
         VALUES('$title', '$genre', '$cast', '$director', '$descr', '$durata', '$target_file')";
       if (mysqli_query($db, $query))
         array_push($success, "Film inserito con successo");
       else
-        array_push($errorArray, "Errore nel caricamento del film");
+        array_push($errors, "Errore nel caricamento del film");
     }
   }
 ?>

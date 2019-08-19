@@ -20,7 +20,7 @@
 <body>
     <?php 
         include_once '../php/navbar.php';
-        if (!isAdmin()) {
+        if (!is_admin()) {
             echo '<div class="form-panel wide">';
             echo '<div class="error">Accesso riservato agli admin</div>';
             echo '</div>';

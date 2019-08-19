@@ -3,9 +3,9 @@
 		echo '<div class="error">';
 		echo '<p>'.$_GET["error"].'</p>';
 		echo '</div>';
-	} elseif (count($errorArray) > 0) {
+	} elseif (count($errors) > 0) {
 		echo "<div class='error'>";
-		foreach($errorArray as $msg)
+		foreach($errors as $msg)
 			echo "<p>".$msg."</p>";
 		echo "</div>";
 	}

@@ -1,6 +1,7 @@
 <?php 
     require_once '../config.php';
     require_once '../php/utils/functions.php';
+    require_once '../php/utils/queries.php';
     require_once '../php/movie_editor.php';
     session_start();
 ?>
@@ -20,7 +21,7 @@
 <body>
     <?php 
         include_once '../php/navbar.php';
-        if (!isAdmin()) {
+        if (!is_admin()) {
             echo '<div class="form-panel wide">';
             echo '<div class="error">Accesso riservato agli admin</div>';
             echo '</div>';

@@ -1,10 +1,10 @@
 <?php
 require_once '../config.php';
-require_once 'utils/db.php';
+require_once 'utils/DbManager.php';
 require_once 'utils/functions.php';
 $errors = 0;
 $success = array();
-$errorArray = array();
+$errors = array();
 $err1 = "Tutti i campi sono obbligatori";
 $err2 = "Username o password errati";
 if (isset($_POST['login_user'])) {
