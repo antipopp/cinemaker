@@ -18,7 +18,7 @@
 		if (!isLogged()) {
 	?>
 	<div class="landing-container">
-		<div class="form-panel">
+		<div class="form-panel thin">
 			<h2 class="form-header">Registrazione</h2>
 			<h6>Tutti i campi sono obbligatori</h5>
 			<?php include_once 'errors.php';?>

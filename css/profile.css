@@ -96,21 +96,3 @@
     min-height: 460px;
     flex-grow: 6;
 }
-
-.reservations {
-    display: none;
-    width: 100%;
-}
-
-.edit-settings {
-    display: flex;
-    width: 100%;
-}
-
-.edit-settings ul {
-    list-style-type: none;
-}
-
-.edit-settings ul li {
-    margin: 10px;
-}

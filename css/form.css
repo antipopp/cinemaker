@@ -8,7 +8,7 @@
 }
 
 .form-panel {
-    width: 300px;
+    /* width: 300px; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -17,6 +17,10 @@
     padding: 40px;
     margin: 60px auto;
     background: #1BBC9B;
+}
+
+.thin {
+    width: 300px !important;
 }
 
 .wide {
@@ -40,6 +44,14 @@
 .form-panel input {
     border:1px solid #ccc;
     width:200px;
+    padding:10px;
+    margin:5px 15px;
+    border-radius:5px;
+}
+
+.form-panel select {
+    border:1px solid #ccc;
+    width:350px;
     padding:10px;
     margin:5px 15px;
     border-radius:5px;

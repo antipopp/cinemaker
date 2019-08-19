@@ -18,7 +18,7 @@
 		if (!isLogged()) {
 	?>
 	<div class="form-container">
-		<div class="form-panel">
+		<div class="form-panel thin">
 			<h2 class="form-header">login</h2>
 			<?php include 'errors.php'; ?>
 			<form action="#" method="post">

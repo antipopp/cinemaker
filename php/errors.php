@@ -1,4 +1,4 @@
-<?php 
+<?php
 	if(isset($_GET["error"])) {
 		echo '<div class="error">';
 		echo '<p>'.$_GET["error"].'</p>';
@@ -11,7 +11,7 @@
 	}
 
 	if(isset($_GET["success"])) {
-		echo '<div class="error">';
+		echo '<div class="success">';
 		echo '<p>'.$_GET["success"].'</p>';
 		echo '</div>';
 	} elseif (count($success) > 0) {
