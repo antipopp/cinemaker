@@ -98,6 +98,8 @@
                             <input type="hidden" name="id_sala" value="<?php echo $sala; ?>">
                             <input type="hidden" name="id_movie" value="<?php echo $movie; ?>">
                             <label>Ricorda, il film dura <?php echo $durata['duration']; ?> minuti e la sala ha <?php echo $seats['seats_no']; ?> posti.</label>
+                            <input type="date" name="date" min="<?php echo date('Y-m-d');?>" required>
+                            <input type="time" name="time" value="13:30" required>
                             <!-- submit -->
                             <br>
                             <button type="submit" class="btn" name="new_screening">Invia</button>                            

@@ -10,7 +10,11 @@
 		echo "</div>";
 	}
 
-	if (count($success) > 0) {
+	if(isset($_GET["success"])) {
+		echo '<div class="error">';
+		echo '<p>'.$_GET["success"].'</p>';
+		echo '</div>';
+	} elseif (count($success) > 0) {
 		echo "<div class='success'>";
 		foreach($success as $msg)
 			echo "<p>".$msg."</p>";
