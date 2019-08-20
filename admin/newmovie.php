@@ -5,7 +5,7 @@
     session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
 <body>
     <?php 
         include_once '../php/navbar.php';
-        if (!is_admin()) {
+        if (!is_admin($_SESSION['id'])) {
             echo '<div class="form-panel wide">';
             echo '<div class="error">Accesso riservato agli admin</div>';
             echo '</div>';
@@ -55,7 +55,7 @@
                         <input class="wide" type="number" name="durata">
                                 
                         <label>Locandina</label>
-                        <input class="wide" type="file" name="cover">
+                        <input class="wide" type="file" name="file">
                         <br>     
                         <button type="submit" class="btn" name="new_movie">Invia</button>
                     </form>

@@ -1,5 +1,6 @@
 <?php 
     require_once 'DbManager.php';
+    require_once 'functions.php';
 
     function authenticate($username, $password){   
         global $cineDb;
@@ -12,7 +13,7 @@
   
         $result = $cineDb->performQueryWithParameters($query, "s", $username);
 
-        $numRow = $result->num_rows();
+        $numRow = $result->num_rows;
         if ($numRow != 1)
             return false;
         
@@ -46,7 +47,9 @@
         global $cineDb;
         $query = "  SELECT *
                     FROM users
-                    WHERE (username OR email OR id) = $param";
+                    WHERE username = '$param' 
+                    OR email = '$param' 
+                    OR id = '$param'";
         $result = $cineDb->performQuery($query);
         return $result;
     }
@@ -61,7 +64,7 @@
         
         $params = array($username, $email, $fullname, $password);
 
-        $result = $cineDb->performQueryWithParameters($query, "sssss", $params);
+        $result = $cineDb->performQueryWithParameters($query, 'ssss', $params);
         return $result;
     }
 
@@ -75,8 +78,16 @@
 
     function get_all_movies() {
         global $cineDb;
-        $query = "  SELECT id, title
+        $query = "  SELECT *
                     FROM movies";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
+    function get_all_rooms() {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM sale";
         $result = $cineDb->performQuery($query);
         return $result;
     }
@@ -87,7 +98,45 @@
                     FROM users
                     WHERE id=$id";
         $result = $cineDb->performQuery($query);
-        return $result;
+        $isAdmin = $result->fetch_assoc();
+        return $isAdmin['isAdmin'];
     }
+
+    function change_email($email, $id) {
+        global $cineDb;
+        $duplicate = find_user($email)->num_rows;
+        if ($duplicate == 1) {
+            return 0;
+        }
+        else {
+            $query = "  UPDATE users
+                        SET email='$email',
+                        WHERE id=$id";
+            $update = $cineDb->performQuery($query);
+            return 1;
+        }
+    }
+
+    function change_password($new_password, $id) {
+        global $cineDb;
+        $result = find_user($id)->fetch_assoc();
+        $query = "  UPDATE users
+                    SET password='$new_password',
+                    WHERE id=$id";
+        $update = $cineDb->performQuery($query);
+        return $update;
+    }
+
+    function get_movie_cover($id) {
+        global $cineDb;
+        global $uploaddir;
+        $query = "SELECT location
+                    FROM upload
+                    WHERE uidimg='$id'";
+        $result = $cineDb->performQuery($query)->fetch_assoc();
+        $location = PathToUrl(ROOT.$result['location']);
+        return $location;
+    }
+
     
 ?>

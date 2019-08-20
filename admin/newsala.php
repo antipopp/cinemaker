@@ -2,6 +2,7 @@
     require_once '../config.php';
     require_once '../php/utils/functions.php';
     require_once '../php/addsala.php';
+    require_once '../php/utils/queries.php';
     session_start();
 ?>
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
 <body>
     <?php 
         include_once '../php/navbar.php';
-        if (!is_admin()) {
+        if (!is_admin($_SESSION['id'])) {
             echo '<div class="form-panel wide">';
             echo '<div class="error">Accesso riservato agli admin</div>';
             echo '</div>';

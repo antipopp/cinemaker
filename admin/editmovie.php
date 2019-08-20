@@ -21,7 +21,7 @@
 <body>
     <?php 
         include_once '../php/navbar.php';
-        if (!is_admin()) {
+        if (!is_admin($_SESSION['id'])) {
             echo '<div class="form-panel wide">';
             echo '<div class="error">Accesso riservato agli admin</div>';
             echo '</div>';
@@ -38,7 +38,7 @@
             <form method="post" action="" class="form-select">
                 <select name="movie">
                     <?php
-                        while($row=mysqli_fetch_array($movie_list_results))
+                        while($row=$movie_list_results->fetch_array())
                         {
                             echo '<option value="' . htmlspecialchars($row['id']) . '">' 
                                 . htmlspecialchars($row['title']) 

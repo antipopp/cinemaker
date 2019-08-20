@@ -15,7 +15,7 @@
                 Prenotazioni </a>
             </li>
                         
-            <?php if (is_admin()) : ?>
+            <?php if (is_admin($_SESSION['id'])) : ?>
             <li class="btns">
                 <a href="../admin/newmovie.php">
                 <i class="material-icons">grade</i>

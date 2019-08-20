@@ -1,6 +1,6 @@
 <?php 
-require __DIR__.'/../../config.php';
-require "dbConfig.php";
+require_once __DIR__.'/../../config.php';
+require_once "dbConfig.php";
 $cineDb = new CineDbManager();
 
 class CineDbManager {
@@ -38,29 +38,16 @@ class CineDbManager {
 		if (!$this->isOpened())
 			$this->openConnection();
 		
-					
-		/* activate reporting */
-		$driver = new mysqli_driver();
-		$driver->report_mode = MYSQLI_REPORT_ERROR;
-
-		try {
-			//Preparo il template dello statement sql		
-			if($stmt = $this->conn->prepare($queryText))  {
-				//Eseguo la query	
-				if(!$stmt->execute()) { 
-					return  null;
-				}
-				//Ottengo i risultati della query		
-				$result = $stmt->get_result(); 
-				return $result;
-			} 
-			else {
-				return null;
-			}
+		//Preparo il template dello statement sql		
+		if($stmt = $this->conn->prepare($queryText))  {
+			$stmt->execute();
+			//Ottengo i risultati della query		
+			$result = $stmt->get_result(); 
+			return $result;
 		} 
-		catch (mysqli_sql_exception $e) {
-			echo $e->__toString();
-		}		
+		else {
+			return 0;
+		}	
 	}
 
 	// In questo caso abbiamo anche dei parametri da inserire nella query. L'overloading dei metodi in php non è possibile quindi ho dato un altro nome alla funzione
@@ -95,15 +82,15 @@ class CineDbManager {
 
 				//Eseguo la query		
 				if(!$stmt->execute()) {
-					echo "Error description: " . $stmt->error; 
-					return  null;
+					$msg = "Error description: " . $stmt->error; 
+					return null;
 				}
 
 				//Ottengo i risultati della query		
 				$result = $stmt->get_result(); 
 				return $result;
 			} else {
-				echo htmlspecialchars($this->conn->error);
+				$msg = htmlspecialchars($this->conn->error);
 				return null;
 			} 
 		} catch (mysqli_sql_exception $e) {

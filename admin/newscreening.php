@@ -20,7 +20,7 @@
 <body>
     <?php 
         include_once '../php/navbar.php';
-        if (!is_admin()) {
+        if (!is_admin($_SESSION['id'])) {
             echo '<div class="form-panel wide">';
             echo '<div class="error">Accesso riservato agli admin</div>';
             echo '</div>';
@@ -39,7 +39,7 @@
                             <label>Titolo</label>
                             <select name="id_movie">
                                 <?php
-                                    while($row=mysqli_fetch_array($movie_list_results))
+                                    while($row=$movie_list->fetch_assoc())
                                     {
                                         echo '<option value="' . htmlspecialchars($row['id']) . '">' 
                                             . htmlspecialchars($row['title']) 
@@ -50,7 +50,7 @@
                             <label>Sala</label>
                             <select name="id_sala">
                                 <?php
-                                    while($row=mysqli_fetch_array($sala_list_results))
+                                    while($row=$sala_list->fetch_assoc())
                                     {
                                         echo '<option value="' . htmlspecialchars($row['id']) . '">' 
                                             . htmlspecialchars($row['name']) 
