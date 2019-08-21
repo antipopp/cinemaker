@@ -1,8 +1,8 @@
 <?php 
 require_once __DIR__.'/../../config.php';
-require_once "dbConfig.php";
-$cineDb = new CineDbManager();
+require_once 'dbConfig.php';
 
+$cineDb = new CineDbManager();
 class CineDbManager {
 	private $conn = null;
 
@@ -56,7 +56,7 @@ class CineDbManager {
 			$this->openConnection();
 		if(count($parameters) != strlen(utf8_decode($parameters_type))) {
 			$error = "Errore nella query, il numero di parametri non coincidono con il numero di tipi inseriti.";
-			header("Location: index.php?err=" . $error);
+			header("Location: #?err=" . $error);
 		}
 		
 		try {
@@ -83,7 +83,8 @@ class CineDbManager {
 				//Eseguo la query		
 				if(!$stmt->execute()) {
 					$msg = "Error description: " . $stmt->error; 
-					return null;
+					array_push($errors, $msg);
+					return $msg;
 				}
 
 				//Ottengo i risultati della query		
@@ -91,7 +92,8 @@ class CineDbManager {
 				return $result;
 			} else {
 				$msg = htmlspecialchars($this->conn->error);
-				return null;
+				array_push($errors, $msg);
+				return $msg;
 			} 
 		} catch (mysqli_sql_exception $e) {
 			echo $e->__toString();

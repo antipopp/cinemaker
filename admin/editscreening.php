@@ -2,7 +2,7 @@
     require_once '../config.php';
     require_once UTILS.'functions.php';
     require_once UTILS.'queries.php';
-    require_once '../php/addscreening.php';
+    require_once '../php/screening_editor.php';
     session_start();
 ?>
 <!DOCTYPE html>
@@ -37,17 +37,6 @@
                     <?php include '../php/errors.php'; ?>
                         <!-- seleziona film -->
 	                    <form method="post" action="">
-                            <label>Titolo</label>
-                            <select name="id_movie">
-                                <?php
-                                    while($row=$movie_list->fetch_assoc())
-                                    {
-                                        echo '<option value="' . htmlspecialchars($row['id']) . '">' 
-                                            . htmlspecialchars($row['title']) 
-                                            . '</option>';
-                                    }
-                                ?>
-                            </select>
                             <label>Sala</label>
                             <select name="id_sala">
                                 <?php
@@ -62,19 +51,31 @@
                             <br>
                             <button type="submit" class="btn" name="select_id">Seleziona</button>     
                         </form>
-                        <?php if (isset($_POST['select_id'])) : ?>
-                        <form method="post" action="" enctype="multipart/form-data">
-                            <!-- form inputs -->
-                            <input type="hidden" name="id_sala" value="<?php echo $sala; ?>">
-                            <input type="hidden" name="id_movie" value="<?php echo $movie; ?>">
-                            <label>Ricorda, il film dura <?php echo $durata['duration']; ?> minuti e la sala ha <?php echo $seats['seats_no']; ?> posti.</label>
-                            <input type="date" name="date" min="<?php echo date('Y-m-d');?>" required>
-                            <input type="time" name="time" required>
-                            <!-- submit -->
-                            <br>
-                            <button type="submit" class="btn" name="new_screening">Invia</button>                            
-                        </form>
-                        <?php endif; ?>
+                        <?php if (isset($_POST['select_id'])) {
+                                $result = get_screenings_by_room($_POST['id_sala']);
+                                while ($row = $result->fetch_assoc()) { 
+                                    list($date, $time) = explode(" ", $row['screening_start']); 
+                                    $movie = get_movie($row['movie_id'])->fetch_assoc(); ?>
+                                    <form class="wide" method="post" action="" enctype="multipart/form-data">    
+                                        <label><?php echo $movie['title']; ?></label>
+                                        <div class="row"> 
+                                            <div class="column">     
+                                                <label>Data</label>
+                                                <input type="date" name="start" value="<?php echo $date; ?>">
+                                            </div>
+                                            <div class="column">   
+                                                <label>Orario</label>   
+                                                <input type="time" name="start" value="<?php echo $time; ?>">
+                                            </div>
+                                        <br>   
+                                        </div>  
+                                        <div class="row">
+                                            <button type="submit" class="btn" name="edit">Modifica</button>
+                                            <button type="submit" class="btn" name="edit">Cancella</button>
+                                        </div>
+                                    </form>
+                        <?php   } // while
+                            } // if ?>
                     </div>
                 </div>
             </div>

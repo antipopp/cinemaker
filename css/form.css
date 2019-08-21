@@ -25,7 +25,7 @@
 
 .wide {
     width: 100% !important;
-    margin: 0px;
+    margin: 15px;
 }
 
 .last-child {
@@ -33,6 +33,16 @@
 }
 .short {
     height: 30%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row !important;
+}
+
+.column {
+    display: flex;
+    flex-direction: column !important;
 }
 
 .form-panel form {
@@ -49,12 +59,32 @@
     border-radius:5px;
 }
 
+.form-panel input[type='date'] {
+    border:1px solid #ccc;
+    flex-grow: 1;
+    padding:10px;
+    margin:5px 15px;
+    border-radius:5px;
+}
+
+.form-panel input[type='time'] {
+    border:1px solid #ccc;
+    flex-grow: 1;
+    padding:10px;
+    margin:5px 15px;
+    border-radius:5px;
+}
+
 .form-panel select {
     border:1px solid #ccc;
     width:350px;
     padding:10px;
     margin:5px 15px;
     border-radius:5px;
+}
+
+.form-panel label {
+    align-self: center;
 }
 
 .form-header {
@@ -70,12 +100,12 @@
     border: none;
     background: #F9433E;
     cursor: pointer;
-    margin: 0 auto;
+    margin: 10px;
     padding: 5px;
     width: 180px;
     color: white;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
-  }
+}
 
 .form-panel button[type='submit']:hover {
     background: #f7130d;

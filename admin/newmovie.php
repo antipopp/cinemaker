@@ -1,6 +1,6 @@
 <?php 
     require_once '../config.php';
-    require_once '../php/utils/functions.php';
+    require_once UTILS.'functions.php';
     require_once '../php/addmovie.php';
     session_start();
 ?>

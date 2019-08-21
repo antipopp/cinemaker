@@ -1,8 +1,8 @@
 <?php
     require_once '../config.php';
-    require_once 'utils/DbManager.php';
-    require_once 'utils/functions.php';
-    require_once 'utils/queries.php';
+    require_once UTILS.'DbManager.php';
+    require_once UTILS.'functions.php';
+    require_once UTILS.'queries.php';
 
     $errorCount = 0;
     $success = array();

@@ -1,5 +1,5 @@
 <?php
-    require_once 'utils/DbManager.php';
+    require_once UTILS.'DbManager.php';
 
     $errors = array(); 
     $success = array();

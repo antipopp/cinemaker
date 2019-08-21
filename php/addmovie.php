@@ -1,5 +1,5 @@
 <?php
-    require_once 'utils/queries.php';
+    require_once UTILS.'queries.php';
     global $cineDb;
     $errors = array(); 
     $success = array();

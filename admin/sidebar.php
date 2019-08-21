@@ -18,6 +18,12 @@
             <li class="btns" id="newscreening">
                 <a href="newscreening.php">
                 <i class="material-icons">movie</i>
+                Aggiungi programmazione </a>
+            </li>
+
+            <li class="btns" id="editscreening">
+                <a href="editscreening.php">
+                <i class="material-icons">movie</i>
                 Modifica programmazione </a>
             </li>
 

@@ -1,7 +1,7 @@
 <?php 
     require_once '../config.php';
-    require_once '../php/utils/functions.php';
-    require_once '../php/utils/queries.php';
+    require_once UTILS.'functions.php';
+    require_once UTILS.'queries.php';
     session_start();
 ?>
 <!DOCTYPE html>

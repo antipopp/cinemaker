@@ -1,6 +1,6 @@
 <?php
-    require_once 'utils/DbManager.php';
-    require_once 'utils/queries.php';
+    require_once UTILS.'DbManager.php';
+    require_once UTILS.'queries.php';
 
     $errors = array(); 
     $success = array();
@@ -21,23 +21,39 @@
         $dateTime = strtotime($date . ' ' . $time);
         $start = date("Y-m-d H:i:s", $dateTime);
         
-        $screen_check_query = "SELECT * FROM screenings WHERE screening_start='$start' LIMIT 1";
-        $screen_check = $cineDb->performQuery($result_screen_check)->fetch_assoc();
-            
-        if ($screen_check) { // se la proiezione e` gia` inserita
-            if ($screen_check['sala_id'] === $sala) {
-                array_push($errors, "Proiezione gia` inserita");
+        // controllo proiezione già inserita
+        $screen_avl_query = "SELECT * FROM screenings WHERE screening_start='$start' AND sala_id=$sala LIMIT 1";
+        $screen_avl = $cineDb->performQuery($screen_avl_query)->fetch_assoc();           
+        if ($screen_avl) { // se la proiezione è già inserita
+            if ($screen_avl['sala_id'] === $sala) {
+                array_push($errors, "Proiezione già inserita");
             }
         }
-        
+
+        // controllo proiezioni troppo vicine
+        $durata = get_movie($movie)->fetch_assoc();
+        $minutes = $durata['duration'];
+        $room_busy_check = "SELECT id, screening_start 
+                            FROM screenings
+                            WHERE sala_id = $sala
+                            AND TIMESTAMPDIFF(MINUTE, screening_start, '$start') < $minutes
+                            AND TIMESTAMPDIFF(MINUTE, screening_start, '$start') > -$minutes";
+        $room_busy = $cineDb->performQuery($room_busy_check);
+        if ($room_busy) { // se sono presenti proiezioni troppo vicine
+            while ($data = $room_busy->fetch_assoc()) {
+                array_push($errors, "Ci sono proiezioni il ".$data['screening_start']);
+            }
+        }
+
+        // se non ci sono errori inserisco
         if (count($errors) == 0) {
             $query = "  INSERT INTO screenings (movie_id, sala_id, screening_start) 
                         VALUES(?, ?, ?)";   
             $params = array($movie, $sala, $start);
-            if ($cineDb->performQueryWithParameters($query, 'iid', $params))
-                array_push($success, "Proiezione inserita con successo");
+            if (!$result = $cineDb->performQueryWithParameters($query, 'iis', $params))
+                array_push($success, 'Proiezione inserita con successo');
             else 
-                array_push($errors, $db->error);
+                array_push($errors, 'Errore server');
         }
     }
 

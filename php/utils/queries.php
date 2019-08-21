@@ -84,10 +84,47 @@
         return $result;
     }
 
+    function get_movie($id) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM movies
+                    WHERE id = $id";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
     function get_all_rooms() {
         global $cineDb;
         $query = "  SELECT *
                     FROM sale";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
+    function get_room($id) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM sale
+                    WHERE id = $id";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
+    function get_screenings_by_movie($movie) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM screenings
+                    WHERE movie_id = $movie";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
+    function get_screenings_by_room($room) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM screenings
+                    WHERE sala_id = $room
+                    ORDER BY screening_start";
         $result = $cineDb->performQuery($query);
         return $result;
     }

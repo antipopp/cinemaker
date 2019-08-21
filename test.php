@@ -7,7 +7,13 @@
     $username = "admin";
     $email = "admin@email.it";
     $password = "admin";
-    echo $_SESSION['id'];
-    // $var = is_admin($_SESSION['id']);
-    // var_dump($var);
+
+    $result = get_screenings_by_room(1);
+    while ($row = $result->fetch_assoc()) {
+        list($date, $time) = explode(" ", $row['screening_start']);
+        echo $date;
+        echo '<br>';
+        echo $time;
+        echo '<br>';
+    }
 ?>

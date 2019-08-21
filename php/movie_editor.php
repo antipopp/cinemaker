@@ -1,5 +1,6 @@
 <?php
-        require_once 'utils/DbManager.php';
+        require_once UTILS.'DbManager.php';
+        require_once UTILS.'functions.php';
         global $cineDb;
         $errors = array();
         $success = array();
