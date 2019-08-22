@@ -96,7 +96,7 @@
     margin-bottom: 10px;
 }
 
-.form-panel button[type='submit'] {
+button {
     border: none;
     background: #F9433E;
     cursor: pointer;
@@ -107,6 +107,6 @@
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
-.form-panel button[type='submit']:hover {
+button:hover {
     background: #f7130d;
 }

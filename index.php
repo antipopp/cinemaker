@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/covers.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/form.css">
     <title>CineMaker</title>
 </head>
 <body>
@@ -39,21 +39,29 @@
                     <p class="movie-descr"><?php echo $row['description'] ?></p>
 
                     <div class="screenings">
-                        <table>
+                        <table>      
                             <?php 
+                                $data = [];
                                 while ($row = $screenings->fetch_assoc()) {
-                                    $date = date('l,j', strtotime($row['screening_start']));
-                                    $time = date('H:i', strtotime($row['screening_start']));
+                                    $day = date('Y-m-d', strtotime($row['screening_start']));
+                                    $data[$day][] = date('H:i', strtotime($row['screening_start']));
+                                }
+                                foreach ($data as $day => $times) {
+                                    $date = date('l, j', strtotime($day));
                             ?>
                                     <tr>
                                         <td><?php echo $date ?></td>
-                                        <td><?php echo $time ?></td>
+                                        <td><?php echo implode(' ', $times) ?></td>
                                     </tr>
                             <?php
                                 } 
                             ?>
                         </table>
                     </div>
+                    <form action="reserv.php" method="post">
+                        <input type="hidden" name="movie_id" value="<?php echo $row['id'] ?>">
+                        <button type="submit" class="btn">Prenota</button>
+                    </form>
                 </div>
                 
             </div>
