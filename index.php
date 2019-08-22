@@ -1,6 +1,8 @@
 <?php 
-    require 'config.php'; 
-    require 'php/utils/functions.php';
+    require_once 'config.php'; 
+    require_once UTILS.'DbManager.php';
+    require_once UTILS.'functions.php';
+    require_once UTILS.'queries.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,58 +21,45 @@
         session_start();
         include "php/navbar.php"; 
     ?>
-
-    <section class="covers-container">
-        <div class="covers fade">
-            <img src="res/poster1.jpg" style="width:100%">
-        </div>
-
-        <div class="covers fade">
-            <img src="res/poster2.jpg" style="width:100%">
-        </div>
-
-        <div class="covers fade">
-            <img src="res/poster3.jpg" style="width:100%">
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br>
-
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span> 
-            <span class="dot" onclick="currentSlide(2)"></span> 
-            <span class="dot" onclick="currentSlide(3)"></span> 
-        </div>
-    </section>
-
     <section class="movies">
         <div class="movie-grid">
+            <?php
+                $movies = get_onair();
+                while($row = $movies->fetch_assoc()) {
+                    $screenings = get_screenings_by_movie($row['id']);
+            ?>
             <div class="movie-item">
                 <div class="image-box">
-                    <img src="res/sample-poster.jpg" alt="movie-poster">
+                    <img src="<?php echo get_movie_cover($row['cover'])?>" alt="movie-poster">
                 </div>
                 <div class="descr-box">
-                    <p class="movie-genre">Action</p>
+                    <h2><?php echo $row['title'] ?></h2>
+                    <p class="movie-genre"><?php echo $row['genre'] ?></p>
                     <hr class="movie-line">
-                    <p class="movie-descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dui leo, laoreet ac posuere a, elementum nec leo.
-                    Donec aliquam, dui at dignissim rhoncus, sem metus volutpat nibh, eget tincidunt sapien eros ut elit. Etiam dictum
-                    felis eget scelerisque ultrices. Sed eu libero erat. Maecenas nec nisl nisi.</p>
-                 </div>
-            </div>
-            <div class="movie-item">
-                <div class="image-box">
-                    <img src="res/sample-poster.jpg" alt="movie-poster">
+                    <p class="movie-descr"><?php echo $row['description'] ?></p>
+
+                    <div class="screenings">
+                        <table>
+                            <?php 
+                                while ($row = $screenings->fetch_assoc()) {
+                                    $date = date('l,j', strtotime($row['screening_start']));
+                                    $time = date('H:i', strtotime($row['screening_start']));
+                            ?>
+                                    <tr>
+                                        <td><?php echo $date ?></td>
+                                        <td><?php echo $time ?></td>
+                                    </tr>
+                            <?php
+                                } 
+                            ?>
+                        </table>
+                    </div>
                 </div>
-                <div class="descr-box">
-                    <p class="movie-genre">Action</p>
-                    <hr class="movie-line">
-                    <p class="movie-descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dui leo, laoreet ac posuere a, elementum nec leo.
-                    Donec aliquam, dui at dignissim rhoncus, sem metus volutpat nibh, eget tincidunt sapien eros ut elit. Etiam dictum
-                    felis eget scelerisque ultrices. Sed eu libero erat. Maecenas nec nisl nisi.</p>
-                 </div>
+                
             </div>
+            <?php 
+                } 
+            ?>
         </div>
     </section>
 

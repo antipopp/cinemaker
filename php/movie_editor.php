@@ -8,7 +8,11 @@
         $movie_list_results = get_all_movies();
 
         if (isset($_POST['send_edit'])) {
-            $file = upload_file();
+            if (isset($_FILES['file'])) {
+                $upload = upload_file();    
+            }
+            else 
+                $upload = get_movie_cover($_POST['cover_id']);      
 
             $edit_query = "UPDATE movies 
                             SET title = '".$_POST['title']."',
@@ -17,9 +21,9 @@
                                 director = '".$_POST['director']."',
                                 duration = '".$_POST['durata']."',
                                 genre = '".$_POST['genre']."',
-                                cover = '".$file."'
+                                cover = '".$upload."'
                             WHERE id = '".$_POST['id']."'";          
-            $edit_results = mysqli_query($db, $edit_query);
+            $edit_results = $cineDb->performQuery($edit_query);
             if ($edit_results)
                 header("Refresh:0");
         }
@@ -35,6 +39,7 @@
             $director = $row['director'];
             $durata = $row['duration'];
             $genre = $row['genre'];
-            $cover = get_movie_cover($row['cover']);
+            $cover = $row['cover'];
+            $coverLocation = get_movie_cover($row['cover']);
         }
 ?>

@@ -74,11 +74,11 @@
                     <input class="wide" type="number" name="durata" value="<?php echo $durata; ?>">
                 
                     <label>Locandina</label>
-                    <input class="wide" type="file" name="cover">
+                    <input class="wide" type="file" name="file">
                 
-                    <img src="<?php echo $cover; ?>" alt="Locandina">
-                <input type="hidden" name="cover_link" value="<?php echo $cover; ?>">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <img src="<?php echo $coverLocation; ?>" alt="Locandina">
+                    <input type="hidden" name="cover_id" value="<?php echo $cover; ?>">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
                 
                 <button type="submit" class="btn" name="send_edit" value="">Modifica</button>
             </form>

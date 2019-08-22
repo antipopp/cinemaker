@@ -136,11 +136,22 @@
         return $result;
     }
 
+    function get_onair() {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM movies 
+                    WHERE onair = 1";
+        $result = $cineDb->performQuery($query);
+        return $result; 
+    }
+
     function get_screenings_by_movie($movie) {
         global $cineDb;
         $query = "  SELECT *
                     FROM screenings
-                    WHERE movie_id = $movie";
+                    WHERE movie_id = $movie
+                    AND screening_start > CURRENT_DATE()
+                    ORDER BY screening_start";
         $result = $cineDb->performQuery($query);
         return $result;
     }

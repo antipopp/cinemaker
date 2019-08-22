@@ -46,8 +46,7 @@
 	function upload_file() {
 		// per prima cosa verifico che il file sia stato effettivamente caricato
 		if (!isset($_FILES['file']) || !is_uploaded_file($_FILES['file']['tmp_name'])) {
-			echo 'Non hai inviato nessun file...';
-			exit;    
+			return 0;    
 		}
 	
 		global $uploaddir, $cineDb;
@@ -82,7 +81,7 @@
 			return $uid_img;
 		}else{
 			//Se l'operazione è fallta...
-			return null;
+			return 0;
 		}		
 	}
 ?>

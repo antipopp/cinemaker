@@ -8,12 +8,6 @@
     $email = "admin@email.it";
     $password = "admin";
 
-    $result = get_screenings_by_room(1);
-    while ($row = $result->fetch_assoc()) {
-        list($date, $time) = explode(" ", $row['screening_start']);
-        echo $date;
-        echo '<br>';
-        echo $time;
-        echo '<br>';
-    }
+    $result = get_movie_cover('img_5d5c0d6849a29');
+    echo $result;
 ?>
