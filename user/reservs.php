@@ -2,6 +2,7 @@
     require_once '../config.php';
     require_once UTILS.'functions.php';
     require_once UTILS.'queries.php';
+    require_once '../php/reservation.php';
     session_start();
 ?>
 <!DOCTYPE html>
@@ -20,21 +21,68 @@
 <body>
     <?php 
         include_once '../php/navbar.php';
-        if (!isLogged()) {
-            $err = "Area riservata agli utenti registrati";
-            header('location: '.PathToUrl(ROOT."php/signin.php?error=".$err));
+        if (!is_admin($_SESSION['id'])) {
+            echo '<div class="form-panel wide">';
+            echo '<div class="error">Accesso riservato agli admin</div>';
+            echo '</div>';
         }
-        else {       
+        else {
     ?>
     <div class="container-main">
         <div class="container-profile">
             <?php include 'sidebar.php'; ?>
-
             <div class="main-profile">
-                <p> non ci sono prenotazioni </p>
+                <div class="form-container">
+                    <div class="form-panel">
+                    <?php include '../php/errors.php'; ?>
+                        <!-- seleziona film -->
+	                    <form method="post" action="">
+                            <label>Film</label>
+                            <select name="id_movie">
+                                <?php
+                                    while($row=$movies->fetch_assoc())
+                                    {
+                                        echo '<option value="' . htmlspecialchars($row['id']) . '">' 
+                                            . htmlspecialchars($row['title']) 
+                                            . '</option>';
+                                    }
+                                ?>
+                            </select>
+                            <br>
+                            <button type="submit" class="btn" name="select_id">Seleziona</button>     
+                        </form>
+                        <?php if (isset($_POST['select_id'])) {
+                                $result = get_screenings_by_movie($_POST['id_movie']);
+                        ?>
+                            <form method="post" action="" enctype="multipart/form-data">
+                                <div class="row">
+                                    <select name="date">
+                                    <?php
+                                    
+                                        while($row=$result->fetch_assoc())
+                                        {
+                                            list($date, $time) = explode(" ", $row['screening_start']);
+                                            $date = date('l, d F', strtotime($date));
+                                            $time = date('H:i', strtotime($time));
+                                            echo '<option value="' . htmlspecialchars($row['id']) . '">' 
+                                                . htmlspecialchars($date) . ' @ ' . htmlspecialchars($time)
+                                                . '</option>';
+                                        }
+                                    ?>
+                                    </select>
+                                    <br>
+                                
+                                    <button type="submit" class="btn" name="next">Prosegui</button>
+                                </div>
+                            </form>
+                        <?php
+                            }
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <?php } ?>
+        <?php } ?>
 </body>
 </html>
