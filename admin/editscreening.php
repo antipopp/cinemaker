@@ -53,29 +53,44 @@
                         </form>
                         <?php if (isset($_POST['select_id'])) {
                                 $result = get_screenings_by_room($_POST['id_sala']);
-                                while ($row = $result->fetch_assoc()) { 
-                                    list($date, $time) = explode(" ", $row['screening_start']); 
-                                    $movie = get_movie($row['movie_id'])->fetch_assoc(); ?>
+                                ?>
                                     <form class="wide" method="post" action="" enctype="multipart/form-data">    
-                                        <label><?php echo $movie['title']; ?></label>
-                                        <div class="row"> 
-                                            <div class="column">     
-                                                <label>Data</label>
-                                                <input type="date" name="start" value="<?php echo $date; ?>">
-                                            </div>
-                                            <div class="column">   
-                                                <label>Orario</label>   
-                                                <input type="time" name="start" value="<?php echo $time; ?>">
-                                            </div>
-                                        <br>   
-                                        </div>  
+                                        <select name="id_screen">
+                                            <?php 
+                                                while ($row = $result->fetch_assoc()) { 
+                                                
+                                                $movie = get_movie($row['movie_id'])->fetch_assoc(); 
+                                            ?>
+                                            <option value="<?php echo htmlspecialchars($row['id'])?>">
+                                                <?php echo htmlspecialchars($row['screening_start']); echo ' - '; echo htmlspecialchars($movie['title']); ?> 
+                                            </option>
+                                            <?php } //while ?>
+                                        </select> 
                                         <div class="row">
-                                            <button type="submit" class="btn" name="edit">Modifica</button>
-                                            <button type="submit" class="btn" name="edit">Cancella</button>
+                                            <button type="submit" class="btn" name="select_id_screen">Modifica</button>
                                         </div>
                                     </form>
-                        <?php   } // while
-                            } // if ?>
+                        <?php
+                            } // if 
+                            if (isset($_POST['select_id_screen'])) {
+                                $result = get_screening($_POST['id_screen'])->fetch_assoc();
+                                list($date, $time) = explode(" ", $result['screening_start']); ;
+                        ?>
+                            <form class="wide" method="post" action="" enctype="multipart/form-data">
+                                <div class="row">
+                                    <input type="date" name="date" value="<?php echo $date ?>">
+                                    <input type="time" name="time" value="<?php echo $time ?>">
+                                    <input type="hidden" name="id" value="<?php echo $result['id'] ?>">
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <button type="submit" class="btn" name="edit">Modifica</button>
+                                    <button type="submit" class="btn" name="delete">Elimina</button>
+                                </div>
+                            </form>
+                            <?php
+                            }
+                            ?>
                     </div>
                 </div>
             </div>

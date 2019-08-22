@@ -110,6 +110,32 @@
         return $result;
     }
 
+    function get_screening($id) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM screenings
+                    WHERE id = $id";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
+    function update_screening($id, $screening_start) {
+        global $cineDb;
+        $query = "  UPDATE screenings
+                    SET screening_start = '$screening_start'
+                    WHERE id = $id";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
+    function delete_screening($id) {
+        global $cineDb;
+        $query = "  DELETE FROM screenings
+                    WHERE id = $id";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
     function get_screenings_by_movie($movie) {
         global $cineDb;
         $query = "  SELECT *
