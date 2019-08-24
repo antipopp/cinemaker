@@ -110,6 +110,23 @@
         return $result;
     }
 
+    function get_room_by_name($name) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM sale
+                    WHERE name = $name";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
+    function new_hall($name, $seats, $rows, $cols) {
+        global $cineDb;
+        $query = "  INSERT INTO sale (name, seats_no, cols, rows) 
+                    VALUES('$name', '$seats', '$rows', '$cols')";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
     function get_screening($id) {
         global $cineDb;
         $query = "  SELECT *
@@ -212,5 +229,41 @@
         return $location;
     }
 
-    
+    function new_reservation($id, $screening, $seat) {
+        global $cineDb;
+        $query = "  INSERT INTO reservations (`user_id`, `screening_id`, `seat`) 
+                    VALUES (?, ?, ?)";
+        $params = array($id, $screening, $seat);
+        $result = $cineDb->performQueryWithParameters($query, 'iis', $params);
+        return $result;
+    }
+
+    function find_reservation_by_user($id) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM reservations
+                    WHERE user_id = ?";
+        $result = $cineDb->performQueryWithParameters($query, 'i', $id);
+        return $result;
+    }
+
+    function find_reservation_by_seat($screening, $seat) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM reservations
+                    WHERE screening_id = ?
+                    AND seat = ?";
+        $params = array($screening, $seat);
+        $result = $cineDb->performQueryWithParameters($query, 'is', $params);
+        return $result;
+    }
+
+    function find_reservation_by_screening($screening) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM reservations
+                    WHERE screening_id = ?";
+        $result = $cineDb->performQueryWithParameters($query, 'i', $screening);
+        return $result;
+    }
 ?>

@@ -37,30 +37,38 @@
                     <p class="movie-genre"><?php echo $row['genre'] ?></p>
                     <hr class="movie-line">
                     <p class="movie-descr"><?php echo $row['description'] ?></p>
-
-                    <div class="screenings">
-                        <table>      
-                            <?php 
-                                $data = [];
-                                while ($row = $screenings->fetch_assoc()) {
-                                    $day = date('Y-m-d', strtotime($row['screening_start']));
-                                    $data[$day][] = date('H:i', strtotime($row['screening_start']));
-                                }
-                                foreach ($data as $day => $times) {
-                                    $date = date('l, j', strtotime($day));
-                            ?>
-                                    <tr>
-                                        <td><?php echo $date ?></td>
-                                        <td><?php echo implode(' ', $times) ?></td>
-                                    </tr>
-                            <?php
-                                } 
-                            ?>
-                        </table>
-                    </div>
-                    <form action="reserv.php" method="post">
-                        <input type="hidden" name="movie_id" value="<?php echo $row['id'] ?>">
-                        <button type="submit" class="btn">Prenota</button>
+                    <form action="user/selection.php" method="post">
+                        <div class="screenings">
+                            <table>      
+                                <?php 
+                                    $data = [];
+                                    while ($row = $screenings->fetch_assoc()) {
+                                        $day = date('Y-m-d', strtotime($row['screening_start']));
+                                        $time = date('H:i', strtotime($row['screening_start']));
+                                        $data[$day][$time][] = $row['id'];
+                                        
+                                    }
+                                    foreach ($data as $day => $times) {
+                                        $date = date('l, j', strtotime($day));
+                                ?>
+                                        <tr>
+                                            <td><?php echo $date ?></td>
+                                            
+                                            <?php foreach ($times as $time => $id) { ?>
+                                                <td>
+                                                    <?php foreach ($id as $id) { ?>
+                                                        <button type="submit" name="selected_screening" value="<?php echo $id ?>">
+                                                    <?php }
+                                                    echo $time ?></button></td>
+                                            <?php
+                                                } 
+                                            ?>       
+                                        </tr>
+                                <?php
+                                    } 
+                                ?>
+                            </table>
+                        </div>
                     </form>
                 </div>
                 

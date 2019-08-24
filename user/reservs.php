@@ -1,8 +1,8 @@
 <?php 
-    require_once '../config.php';
+    require_once '/../config.php';
     require_once UTILS.'functions.php';
     require_once UTILS.'queries.php';
-    require_once '../php/reservation.php';
+    require_once '/../php/reservation.php';
     session_start();
 ?>
 <!DOCTYPE html>
@@ -20,10 +20,10 @@
 </head>
 <body>
     <?php 
-        include_once '../php/navbar.php';
-        if (!is_admin($_SESSION['id'])) {
+        include_once '/../php/navbar.php';
+        if (!isLogged()) {
             echo '<div class="form-panel wide">';
-            echo '<div class="error">Accesso riservato agli admin</div>';
+            echo '<div class="error">Accesso riservato agli utenti registrati</div>';
             echo '</div>';
         }
         else {
@@ -34,7 +34,7 @@
             <div class="main-profile">
                 <div class="form-container">
                     <div class="form-panel">
-                    <?php include '../php/errors.php'; ?>
+                    <?php include '/../php/errors.php'; ?>
                         <!-- seleziona film -->
 	                    <form method="post" action="">
                             <label>Film</label>
@@ -54,15 +54,16 @@
                         <?php if (isset($_POST['select_id'])) {
                                 $result = get_screenings_by_movie($_POST['id_movie']);
                         ?>
-                            <form method="post" action="" enctype="multipart/form-data">
+                            <form method="post" action="selection.php" enctype="multipart/form-data">
                                 <div class="row">
                                     <select name="date">
                                     <?php
                                     
                                         while($row=$result->fetch_assoc())
                                         {
+                                            setlocale(LC_TIME, 'it_IT');
                                             list($date, $time) = explode(" ", $row['screening_start']);
-                                            $date = date('l, d F', strtotime($date));
+                                            $date = strftime('%A, %d %B', strtotime($date));
                                             $time = date('H:i', strtotime($time));
                                             echo '<option value="' . htmlspecialchars($row['id']) . '">' 
                                                 . htmlspecialchars($date) . ' @ ' . htmlspecialchars($time)

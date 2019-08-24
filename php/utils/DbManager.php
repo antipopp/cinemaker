@@ -1,7 +1,6 @@
 <?php 
 require_once __DIR__.'/../../config.php';
 require_once 'dbConfig.php';
-
 $cineDb = new CineDbManager();
 class CineDbManager {
 	private $conn = null;
@@ -83,7 +82,6 @@ class CineDbManager {
 				//Eseguo la query		
 				if(!$stmt->execute()) {
 					$msg = "Error description: " . $stmt->error; 
-					array_push($errors, $msg);
 					return $msg;
 				}
 
@@ -92,7 +90,6 @@ class CineDbManager {
 				return $result;
 			} else {
 				$msg = htmlspecialchars($this->conn->error);
-				array_push($errors, $msg);
 				return $msg;
 			} 
 		} catch (mysqli_sql_exception $e) {

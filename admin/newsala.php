@@ -39,8 +39,10 @@
 							<?php include '../php/errors.php'; ?> 	
 							<label>Nome sala</label>
 							<input type="text" name="name" value="">  		
-							<label>Posti</label>
-							<input type="number" name="seats" value=""> 
+							<label>File</label>
+                            <input type="number" name="rows" value="">
+                            <label>Posti per fila</label>
+							<input type="number" name="cols" value="">  
 							<br>	
 							<button type="submit" class="btn" name="new_sala">Invia</button>
 						</form>
