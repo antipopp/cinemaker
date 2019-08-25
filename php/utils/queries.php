@@ -238,12 +238,21 @@
         return $result;
     }
 
+    function find_reservation($id) {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM reservations
+                    WHERE id = $id";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
     function find_reservation_by_user($id) {
         global $cineDb;
         $query = "  SELECT *
                     FROM reservations
-                    WHERE user_id = ?";
-        $result = $cineDb->performQueryWithParameters($query, 'i', $id);
+                    WHERE user_id = $id";
+        $result = $cineDb->performQuery($query);
         return $result;
     }
 
@@ -264,6 +273,14 @@
                     FROM reservations
                     WHERE screening_id = ?";
         $result = $cineDb->performQueryWithParameters($query, 'i', $screening);
+        return $result;
+    }
+
+    function delete_reservation($id) {
+        global $cineDb;
+        $query = "  DELETE FROM reservations
+                    WHERE id = $id";
+        $result = $cineDb->performQuery($query);
         return $result;
     }
 ?>
