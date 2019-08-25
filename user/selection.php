@@ -21,9 +21,9 @@
 <body>
     <?php 
         include_once '/../php/navbar.php';
-        include '/../php/errors.php';
         if (!isLogged()) {
             array_push($errors, "Accesso riservato agli utenti");
+            include '/../php/errors.php';
         }
         elseif (isset($_POST['book'])) {         
     ?>
@@ -40,6 +40,7 @@
                 
             </form>              
         </div>
+        <script src="../js/seatmap.js"></script>
     <?php
         }
         else {
@@ -48,6 +49,6 @@
         }
     ?>
 
-    <script src="../js/seatmap.js"></script>
+    
 </body>
 </html>

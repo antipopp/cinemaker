@@ -3,16 +3,10 @@
     <p class="user-title"><?php echo $_SESSION['username']?></p>
     <div class="menu-profile">
         <ul class="user-nav">
-            <li class="btns" id="newmovie">
-                <a href="newmovie.php">
+            <li class="btns" id="movies">
+                <a href="movies.php">
                 <i class="material-icons">movie</i>
-                Aggiungi film </a>
-            </li>
-                        
-            <li class="btns" id="editmovie">
-                <a href="editmovie.php">
-                <i class="material-icons">movie</i>
-                Modifica film </a>
+                Film </a>
             </li>
 
             <li class="btns" id="newscreening">

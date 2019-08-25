@@ -5,10 +5,10 @@
     justify-content: center;
     align-content: center;
     flex-direction: column;
+    align-items: center;
 }
 
 .form-panel {
-    /* width: 300px; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -20,7 +20,13 @@
 }
 
 .thin {
-    width: 300px !important;
+    flex-grow: 1;
+    /* width: 30% !important; */
+}
+
+.fat {
+    flex-grow: 2;
+    /* width: 80 !important; */
 }
 
 .wide {
@@ -29,7 +35,7 @@
 }
 
 .last-child {
-    margin-top: 20px;
+    margin: 20px 0 0 0;
 }
 .short {
     height: 30%;

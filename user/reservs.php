@@ -35,7 +35,7 @@
                 <div class="form-container">
                     <div class="form-panel">
                         <?php include '/../php/errors.php' ?>
-                        <table class="tg">
+                        <table>
                             <tr>
                                 <th>Film</th>
                                 <th>Orario</th>

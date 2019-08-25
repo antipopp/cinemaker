@@ -17,7 +17,7 @@
                         
             <?php if (is_admin($_SESSION['id'])) : ?>
             <li class="btns">
-                <a href="../admin/newmovie.php">
+                <a href="../admin/movies.php">
                 <i class="material-icons">grade</i>
                 Amministrazione </a>
             </li>

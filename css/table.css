@@ -15,12 +15,13 @@ td {
     border: 1px solid black;
 } */
 
-.tg {
+table {
     border-collapse: collapse;
     border-color: #bbb;
+    width: 100%;
 }
 
-.tg td {
+table td {
     font-size: 14px;
     padding: 10px 5px;
     border-style: solid;
@@ -28,9 +29,10 @@ td {
     border-color: #bbb;
     color: #594F4F;
     background-color: #E0FFEB;
+    vertical-align: middle;
 }
 
-.tg th {
+table th {
     font-size: 14px;
     font-weight: bold;
     padding: 10px 5px;
@@ -42,16 +44,25 @@ td {
     text-align: left;
 }
 
+table .image-box {
+    width: 20%;
+}
+
+td img {
+    max-height: 20%; 
+    width: auto; 
+}
+
 @media screen and (max-width: 767px) {
-    .tg {
+    table {
         width: auto !important;
     }
 
-    .tg col {
+    table col {
         width: auto !important;
     }
 
-    .tg-wrap {
+    table .wrap {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }

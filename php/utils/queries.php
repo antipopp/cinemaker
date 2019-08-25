@@ -162,6 +162,24 @@
         return $result; 
     }
 
+    function set_onair($id) {
+        global $cineDb;
+        $query = "  UPDATE movies
+                    SET onair = 1
+                    WHERE id = ?";
+        $result = $cineDb->performQueryWithParameters($query, 'i', $id);
+        return $result; 
+    }
+
+    function unset_onair($id) {
+        global $cineDb;
+        $query = "  UPDATE movies
+                    SET onair = 0
+                    WHERE id = ?";
+        $result = $cineDb->performQueryWithParameters($query, 'i', $id);
+        return $result; 
+    }
+
     function get_screenings_by_movie($movie) {
         global $cineDb;
         $query = "  SELECT *
@@ -279,6 +297,14 @@
     function delete_reservation($id) {
         global $cineDb;
         $query = "  DELETE FROM reservations
+                    WHERE id = $id";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
+    function delete_movie($id) {
+        global $cineDb;
+        $query = "  DELETE FROM movies
                     WHERE id = $id";
         $result = $cineDb->performQuery($query);
         return $result;

@@ -19,7 +19,6 @@
 </head>
 <body>
     <?php 
-        session_start();
         include "php/navbar.php"; 
     ?>
     <section class="movies">

@@ -1,14 +1,14 @@
 .container-main {
     display: flex;
-    justify-content: center;
-    
+  
 }
 
 .container-profile {
     display: flex;
     margin: 20px 0;
-    width: 70%;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .side-profile {
@@ -17,7 +17,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 20px;   
+    min-width: 300px;
 }
 
 .side-profile img {
@@ -85,8 +86,8 @@
     border-bottom: none;
     color: #5b9bd1;
     background-color: #f6f9fb;
-    border-left: 2px solid #5b9bd1;
-    margin-left: -2px;
+    border-right: 2px solid #5b9bd1;
+    margin-right: -2px;
 }
 
 .main-profile {
@@ -94,5 +95,15 @@
     padding: 20px;
     background: #fff;
     min-height: 460px;
-    flex-grow: 6;
+    flex-grow: 2;
+}
+
+.main-profile img {
+    max-width: 100%;
+}
+
+.double {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }

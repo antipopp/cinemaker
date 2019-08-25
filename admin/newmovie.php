@@ -30,9 +30,8 @@
     <div class="container-main">
         <div class="container-profile">
         <?php include 'sidebar.php'; ?>
-
             <div class="main-profile">
-                <div class="form-panel wide">
+                <div class="form-panel">
                     <form class="wide" method="post" action="" enctype="multipart/form-data">
                         <?php include '../php/errors.php'; ?>
                         
