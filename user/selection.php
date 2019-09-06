@@ -35,7 +35,7 @@
     ?>
         <div class="hall">
             <h1>SCHERMO</h1>
-            <form action="#" method="post" id="seatmap">
+            <form action="" method="post" id="seatmap">
             <input type="hidden" id="screening_id" name="screening" value="<?php echo $_POST['selected_screening']?>">
                 
             </form>              

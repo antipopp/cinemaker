@@ -1,7 +1,7 @@
-<?php 
-	require_once 'registration.php'; 
+<?php  
 	require_once '../config.php';
 	require_once UTILS.'functions.php';
+	require_once 'registration.php';
 	session_start();
 ?>
 <!DOCTYPE html>
