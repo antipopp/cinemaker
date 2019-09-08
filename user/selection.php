@@ -25,9 +25,13 @@
             array_push($errors, "Accesso riservato agli utenti");
             include '/../php/errors.php';
         }
-        elseif (isset($_POST['book'])) {         
+        elseif (isset($_POST['book'])) {    
+            include '/../php/errors.php';     
     ?>
-        
+        <form action="" method="post">
+            <input type="hidden" id="screening_id" name="screening" value="<?php echo $screening ?>">
+            <button type="submit">TORNA INDIETRO</button>  
+        </form> 
     <?php 
         }
         elseif (isset($_POST['selected_screening'])) {

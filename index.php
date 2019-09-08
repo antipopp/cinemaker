@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/form.css">
-    <title>CineMaker</title>
+    <title>Cinemino</title>
 </head>
 <body>
     <?php 
@@ -78,8 +78,5 @@
             ?>
         </div>
     </section>
-
-    <footer></footer>
-    <script src="js/covers.js"></script>
 </body>
 </html>
