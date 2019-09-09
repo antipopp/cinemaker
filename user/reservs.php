@@ -42,7 +42,7 @@
                                 <th>Posto</th>
                             </tr>
                     <?php
-                        while ($row = $reservs->fetch_assoc()) {
+                        while ($row = $active_reservs->fetch_assoc()) {
                             $screening = get_screening($row['screening_id'])->fetch_assoc();
                             $datetime = date('l, j - H:i', strtotime($screening['screening_start']));
                             $movie = get_movie($screening['movie_id'])->fetch_assoc();    

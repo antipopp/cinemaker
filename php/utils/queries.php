@@ -265,6 +265,19 @@
         return $result;
     }
 
+    function find_active_reservs($id) {
+        global $cineDb;
+        $query = "  SELECT R.id, R.user_id, R.screening_id, R.seat
+                    FROM reservations R
+                        INNER JOIN
+                        screenings S
+                        ON R.screening_id = S.id
+                    WHERE R.user_id = $id
+                    AND S.screening_start > current_date()";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
     function find_reservation_by_user($id) {
         global $cineDb;
         $query = "  SELECT *

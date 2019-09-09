@@ -6,7 +6,7 @@
     session_start();
     
     $user = $_SESSION['id'];
-    $reservs = find_reservation_by_user($user);
+    $active_reservs = find_active_reservs($user);
     $errors = [];
     $success = [];
 

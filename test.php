@@ -7,11 +7,8 @@
     $username = "admin";
     $email = "admin@email.it";
     $password = "admin";
-
-    $arr = ['1A', '2B', '3b'];
-    $result = implode(', ', $arr);
     
-    $reservs = find_reservation_by_user(12);
+    $reservs = find_active_reservs(12);
     var_dump($reservs);
 ?>
 
