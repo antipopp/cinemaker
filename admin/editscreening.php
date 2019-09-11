@@ -53,7 +53,7 @@
                         </form>
                         <?php if (isset($_POST['select_id'])) {
                                 $result = get_screenings_by_room($_POST['id_sala']);
-                                ?>
+                        ?>
                                     <form class="wide" method="post" action="" enctype="multipart/form-data">    
                                         <select name="id_screen">
                                             <?php 

@@ -8,8 +8,8 @@
     $email = "admin@email.it";
     $password = "admin";
     
-    $reservs = find_active_reservs(12);
-    var_dump($reservs);
+    $result = $screenings = get_screenings_by_movie(10);
+    var_dump($result);
 ?>
 
 </body>

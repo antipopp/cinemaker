@@ -59,7 +59,8 @@
                                                     <?php foreach ($id as $id) { ?>
                                                         <button type="submit" name="selected_screening" value="<?php echo $id ?>">
                                                     <?php }
-                                                    echo $time ?></button></td>
+                                                    echo $time ?></button>
+                                                </td>
                                             <?php
                                                 } 
                                             ?>       

@@ -127,6 +127,15 @@
         return $result;
     }
 
+    function get_all_screenings() {
+        global $cineDb;
+        $query = "  SELECT *
+                    FROM screenings
+                    WHERE screening_start >= CURRENT_DATE()";
+        $result = $cineDb->performQuery($query);
+        return $result;
+    }
+
     function get_screening($id) {
         global $cineDb;
         $query = "  SELECT *
@@ -185,7 +194,7 @@
         $query = "  SELECT *
                     FROM screenings
                     WHERE movie_id = $movie
-                    AND screening_start > CURRENT_DATE()
+                    AND screening_start >= CURRENT_DATE()
                     ORDER BY screening_start";
         $result = $cineDb->performQuery($query);
         return $result;
@@ -196,6 +205,7 @@
         $query = "  SELECT *
                     FROM screenings
                     WHERE sala_id = $room
+                    AND screening_start >= CURRENT_DATE()
                     ORDER BY screening_start";
         $result = $cineDb->performQuery($query);
         return $result;

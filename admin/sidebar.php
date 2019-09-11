@@ -21,6 +21,12 @@
                 Modifica programmazione </a>
             </li>
 
+            <li class="btns" id="reservs">
+                <a href="reservs.php">
+                <i class="material-icons">event_seat</i>
+                Prenotazioni</a>
+            </li>
+
             <li class="btns" id="newsala">
                 <a href="newsala.php">
                 <i class="material-icons">event_seat</i>
