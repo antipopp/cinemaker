@@ -35,7 +35,7 @@
                 <div class="form-container">
                     <div class="form-panel">
 
-                    <form method="post" action="" class="form-select">
+                    <form method="post"   class="form-select">
                         <select name="movie">
                             <?php
                                 while($row=$movie_list_results->fetch_array())
@@ -53,7 +53,7 @@
                     <?php if (isset($_POST['movie'])) : ?>
                     <div class="double">
                         <div class="form-panel last-child">
-                            <form class="wide" method="post" action="" enctype="multipart/form-data">
+                            <form class="wide" method="post"   enctype="multipart/form-data">
                                 <?php include('../php/errors.php'); ?>
 
                                     <label>Titolo</label>

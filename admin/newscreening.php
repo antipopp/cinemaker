@@ -36,7 +36,7 @@
                     <div class="form-panel">
                     <?php include '../php/errors.php'; ?>
                         <!-- seleziona film -->
-	                    <form method="post" action="">
+	                    <form method="post"  >
                             <label>Titolo</label>
                             <select name="id_movie">
                                 <?php
@@ -63,7 +63,7 @@
                             <button type="submit" class="btn" name="select_id">Seleziona</button>     
                         </form>
                         <?php if (isset($_POST['select_id'])) : ?>
-                        <form method="post" action="" enctype="multipart/form-data">
+                        <form method="post"   enctype="multipart/form-data">
                             <!-- form inputs -->
                             <input type="hidden" name="id_sala" value="<?php echo $sala; ?>">
                             <input type="hidden" name="id_movie" value="<?php echo $movie; ?>">

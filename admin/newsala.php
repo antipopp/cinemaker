@@ -35,7 +35,7 @@
 			<div class="main-profile">
 				<div class="form-container">
                     <div class="form-panel">
-						<form method="post" action="">
+						<form method="post"  >
 							<?php include '../php/errors.php'; ?> 	
 							<label>Nome sala</label>
 							<input type="text" name="name" value="">  		

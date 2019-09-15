@@ -52,7 +52,7 @@
                                 <td><?php echo $datetime ?></td>
                                 <td><?php echo $row['seat'] ?></td>
                                 <td>
-                                    <form action="" method="post">
+                                    <form   method="post">
                                         <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
                                         <button type="submit" name="delete">ELIMINA</button>
                                     </form>

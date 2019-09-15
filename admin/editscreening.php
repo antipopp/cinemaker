@@ -36,7 +36,7 @@
                     <div class="form-panel">
                     <?php include '../php/errors.php'; ?>
                         <!-- seleziona film -->
-	                    <form method="post" action="">
+	                    <form method="post"  >
                             <label>Sala</label>
                             <select name="id_sala">
                                 <?php
@@ -54,7 +54,7 @@
                         <?php if (isset($_POST['select_id'])) {
                                 $result = get_screenings_by_room($_POST['id_sala']);
                         ?>
-                                    <form class="wide" method="post" action="" enctype="multipart/form-data">    
+                                    <form class="wide" method="post"   enctype="multipart/form-data">    
                                         <select name="id_screen">
                                             <?php 
                                                 while ($row = $result->fetch_assoc()) { 
@@ -76,7 +76,7 @@
                                 $result = get_screening($_POST['id_screen'])->fetch_assoc();
                                 list($date, $time) = explode(" ", $result['screening_start']); ;
                         ?>
-                            <form class="wide" method="post" action="" enctype="multipart/form-data">
+                            <form class="wide" method="post"   enctype="multipart/form-data">
                                 <div class="row">
                                     <input type="date" name="date" value="<?php echo $date ?>">
                                     <input type="time" name="time" value="<?php echo $time ?>">

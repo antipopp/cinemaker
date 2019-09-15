@@ -33,7 +33,7 @@
             <div class="main-profile">
                 <div class="form-panel">
                     <?php include '../php/edit_user.php'; ?>
-                    <form method="post" action="">
+                    <form method="post"  >
                         <h2 class="form-header">Modifica i dati</h2>
                         <?php include '../php/errors.php'; ?>
                         <input type="text" name="email" value="<?php echo $email; ?>">                       

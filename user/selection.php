@@ -28,7 +28,7 @@
         elseif (isset($_POST['book'])) {    
             include '/../php/errors.php';     
     ?>
-        <form action="" method="post">
+        <form   method="post">
             <input type="hidden" id="screening_id" name="screening" value="<?php echo $screening ?>">
             <button type="submit">TORNA INDIETRO</button>  
         </form> 
@@ -39,7 +39,7 @@
     ?>
         <div class="hall">
             <h1>SCHERMO</h1>
-            <form action="" method="post" id="seatmap">
+            <form   method="post" id="seatmap">
             <input type="hidden" id="screening_id" name="screening" value="<?php echo $_POST['selected_screening']?>">
                 
             </form>              

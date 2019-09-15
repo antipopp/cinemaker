@@ -59,17 +59,17 @@
                                                 <input type="hidden" name="movie" value="<?php echo $id?>">
                                                 <button type="submit" name="edit_movie">MODIFICA</button>
                                             </form>
-                                            <form action="" method="post">
+                                            <form   method="post">
                                                 <input type="hidden" name="movie" value="<?php echo $id?>">
                                                 <button type="submit" name="delete_movie">ELIMINA</button>
                                             </form>
                                             <?php if ($onair) { ?>
-                                                <form action="" method="post">
+                                                <form   method="post">
                                                     <input type="hidden" name="movie" value="<?php echo $id?>">
                                                     <button type="submit" name="unset_onair">NASCONDI</button>
                                                 </form>
                                             <?php } else { ?>
-                                                <form action="" method="post">
+                                                <form   method="post">
                                                     <input type="hidden" name="movie" value="<?php echo $id?>">
                                                     <button type="submit" name="set_onair">PUBBLICA</button>
                                                 </form>

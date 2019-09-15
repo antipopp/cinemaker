@@ -1,5 +1,5 @@
 <div class="side-profile">
-    <img src="https://api.adorable.io/avatars/140/<?php echo $_SESSION['username']?>@adorable.io.png">
+    <img src="https://api.adorable.io/avatars/140/<?php echo $_SESSION['username']?>@adorable.io.png" alt="Avatar">
     <p class="user-title"><?php echo $_SESSION['username']?></p>
     <div class="menu-profile">
         <ul class="user-nav">

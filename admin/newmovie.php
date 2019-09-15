@@ -32,7 +32,7 @@
         <?php include 'sidebar.php'; ?>
             <div class="main-profile">
                 <div class="form-panel">
-                    <form class="wide" method="post" action="" enctype="multipart/form-data">
+                    <form class="wide" method="post"   enctype="multipart/form-data">
                         <?php include '../php/errors.php'; ?>
                         
                         <label>Titolo</label>
