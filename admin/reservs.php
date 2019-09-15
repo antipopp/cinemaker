@@ -36,7 +36,7 @@
 				<div class="form-container">
                     <div class="form-panel">
 						<!-- seleziona proiezione -->
-	                    <form method="post" action="">
+	                    <form method="post"  >
                             <label>Proiezione</label>
                             <select name="id_movie" onchange="this.form.submit()">
                                 <?php while($row=$onair->fetch_assoc()) { ?>
@@ -45,13 +45,34 @@
                                 <?php } ?>
                             </select>
                         </form>
-                        <form method="post" action="">
-                            <div class="row">
-                            
-                            </div>
+                        <?php if(isset($_POST['id_movie'])) { 
+                            $screenings = get_screenings_by_movie($_POST['id_movie']);?>
+                        <form method="post"  >
+                        <select name="id_screenings">
+                        <?php 
+                            while($row = $screenings->fetch_assoc()) {
+                            $day = date('Y-m-d', strtotime($row['screening_start']));
+                            $time = date('H:i', strtotime($row['screening_start']));
+                            $id = $row['id'];
+                        ?> 
+                            <option value="<?php echo $id?>"><?php echo $day." - ".$time?></option>
+                        <?php
+                        } // while row ?>    
+                        </select>
                             <br>
                             <button type="submit" class="btn" name="select_id">Seleziona</button>     
                         </form>
+
+                        <?php }  //if isset id_movie
+                        
+                        if (isset($_POST['id_screenings'])) {
+                            $reservs = find_reservation_by_screening($_POST['id_screenings']);
+                            $hall = 
+                            $total = $reservs->num_rows;
+                            echo "<br>";
+                            echo "Ci sono ".$total." posti prenotati";
+                        }  ?>
+
 			  		</div>
 			  	</div>
 			</div>
