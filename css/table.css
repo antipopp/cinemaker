@@ -44,13 +44,8 @@ table th {
     text-align: left;
 }
 
-table .image-box {
-    width: 20%;
-}
-
 td img {
-    max-height: 20%; 
-    width: auto; 
+    width: 200px; 
 }
 
 @media screen and (max-width: 767px) {

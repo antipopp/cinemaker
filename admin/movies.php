@@ -51,7 +51,7 @@
                                     $onair = $row['onair'];
                             ?>
                                     <tr>
-                                        <td class='image-box'><img src="<?php echo $cover ?>" alt="Locandina"></td>
+                                        <td><img src="<?php echo $cover ?>" alt="Locandina"></td>
                                         <td><?php echo $title ?></td>
                                         <td><?php echo ($onair?'Pubblicato':'Nascosto'); ?></td>
                                         <td>

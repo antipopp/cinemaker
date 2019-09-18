@@ -36,8 +36,6 @@
 <nav class="bottom">
     <ul>
         <li><a href="#" class="active">Programmazione</a></li>
-        <li><a href="#">Prossimamente</a></li>
-        <li><a href="#">Eventi</a></li>
         <li><a href="#">Prezzi</a></li>
         <li><a href="#">Contatti</a></li>
     </ul>
