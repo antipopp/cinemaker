@@ -35,10 +35,10 @@
 
 <nav class="bottom">
     <ul>
-        <li><a href="#" class="active">Programmazione</a></li>
-        <li><a href="#">Prezzi</a></li>
-        <li><a href="#">Contatti</a></li>
+        <li><a href="<?php echo PathToUrl(ROOT."index.php"); ?>" id="index">Programmazione</a></li>
+        <li><a href="<?php echo PathToUrl(ROOT."istruzioni.php"); ?>" id="istruzioni">Istruzioni</a></li>
     </ul>
 </nav>
 
 <script src="<?php echo PathToUrl(ROOT."js/loginDropdown.js"); ?>"></script>
+<script src="<?php echo PathToUrl(ROOT."js/setActiveSidebar.js"); ?>"></script>
